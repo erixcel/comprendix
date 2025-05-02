@@ -1,0 +1,36 @@
+<div class="relative h-full w-full"> <!-- Contenedor principal -->
+  <!-- Capas de fondo -->
+  <div class="absolute inset-0 flex flex-col">
+    <div class="w-full h-[50%] bg-[#b8f1f9]"></div>
+    <div class="w-full h-[10%] bg-[#faf6be]"></div>
+    <div class="w-full h-[25%] bg-[repeating-linear-gradient(90deg,_#ffb114_0_50px,_#ffce2a_50px_100px)]"></div>
+    <div class="w-full h-[15%] bg-[#7c580c]"></div>
+  </div>
+
+  <!-- Contenido centrado encima de los fondos -->
+  <div class="relative z-10 h-full w-full">
+    <div class="grid grid-cols-12 h-full">
+      <div class="col-span-6 sm:col-span-8 lg:col-span-9 place-items-center">
+        <div class="text-8xl font-winky font-bold text-red-500 text-out-color-red-900 text-out-w-4 m-3">
+          MI RINCÓN LECTOR
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 w-4xl p-3">
+          @for (item of items; track item.imageUrl) {
+            <div class="aspect-square w-full bg-contain" style="background-image:url('./images/box_white.svg');">
+              <div class="flex justify-center items-center p-3 transition-transform duration-300 hover:scale-105">
+                <img class="aspect-square bg-contain w-full" [src]="item.imageUrl"/>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="col-span-6 sm:col-span-4 lg:col-span-3">
+        <div class="h-full relative">
+          <img class="absolute right-0 top-0 h-3/12 w-auto" src="./images/flags.svg"/>
+          <img class="absolute right-0 bottom-0 h-9/12 w-auto" src="./images/fox_book.svg"/>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

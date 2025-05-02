@@ -12,14 +12,14 @@ export class WelcomeComponent {
   private router = inject(Router);
 
   redirectToOptionReader(): void {
-    this.router.navigate(['/reading']).then(() => {});
+    this.router.navigate(['content/menu'], { queryParams: { option: 'reading' } }).then(() => {});
   }
 
   redirectToOptionPdf(): void {
-    this.router.navigate(['/pdf']).then(() => {});
+    this.router.navigate(['content/menu'], { queryParams: { option: 'pdf' } }).then(() => {});
   }
 
   redirectToOptionGrasp(): void {
-    this.router.navigate(['/games']).then(() => {});
+    this.router.navigate(['content/menu'], { queryParams: { option: 'games' } }).then(() => {});
   }
 }
