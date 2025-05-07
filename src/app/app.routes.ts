@@ -9,7 +9,7 @@ import { MenuComponent } from '../components/menu/menu.component';
 export const routes: Routes = [
   { path: '', component: SplashComponent},
   { path: 'content', component: ContentComponent,
-    children:[
+    children: [
       { path: "welcome", component: WelcomeComponent},
       { path: "menu", component: MenuComponent},
       { path: "question", component: QuestionComponent},

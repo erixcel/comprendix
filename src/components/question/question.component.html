@@ -1,1 +1,40 @@
-<p>question works!</p>
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-3">
+    <img src="https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg" alt=""/>
+  </div>
+  <div class="col-span-7">
+    <div>Las alas de Pipo</div>
+    <div>Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba.
+      —“¿Por qué no puedo volar como los pájaros?” —decía, moviendo sus alitas cortas.
+       Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba!
+      —“Mis alas no sirven…” —decía triste.
+      Un día, sin querer, resbaló y cayó al agua.
+       ¡SPLASH! Pipo empezó a mover sus alas…
+       ¡y nadó como un rayo! Giraba, saltaba, se hundía…
+      ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!</div>
+  </div>
+  <div class="col-span-2 place-items-end pt-4">
+    @for (idx of numbers; track $index) {
+      <div class="flex items-center mb-2 group">
+        <div
+          [ngClass]="[
+            'relative flex items-center justify-center w-20 h-20 rounded-full transition-colors duration-200',
+            getColorClasses(idx).bg,
+            getColorClasses(idx).hover
+          ]"
+        >
+          <div class="absolute inset-1 bg-black/50 rounded-full flex items-center justify-center cursor-pointer">
+            <span class="text-white font-bold text-4xl">{{ idx + 1 }}</span>
+          </div>
+        </div>
+        <div
+          [ngClass]="[
+            'h-20 -ml-10 w-25 transition-colors duration-200 cursor-help',
+            getColorClasses(idx).bg,
+            getColorClasses(idx).hover
+          ]"
+        ></div>
+      </div>
+    }
+  </div>
+</div>
