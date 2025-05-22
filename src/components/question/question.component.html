@@ -1,40 +1,49 @@
 <div class="grid grid-cols-12 w-full h-full">
-  <div class="col-span-3">
-    <img src="https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg" alt=""/>
+  <div class="col-span-3 p-6">
+    <div class="h-full relative">
+      <img class="absolute h-full w-auto" src="https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg"/>
+      <img class="absolute h-full w-auto" src="./avif/picture_frame.avif"/>
+    </div>
   </div>
-  <div class="col-span-7">
-    <div>Las alas de Pipo</div>
-    <div>Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba.
-      —“¿Por qué no puedo volar como los pájaros?” —decía, moviendo sus alitas cortas.
-       Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba!
-      —“Mis alas no sirven…” —decía triste.
-      Un día, sin querer, resbaló y cayó al agua.
-       ¡SPLASH! Pipo empezó a mover sus alas…
-       ¡y nadó como un rayo! Giraba, saltaba, se hundía…
-      ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!</div>
+  <div class="col-span-7 p-6">
+    <div class="font-passion text-6xl mb-3">Las alas de Pipo</div>
+    <div class="font-open font-bold text-2xl">Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba.<br>
+      —“¿Por qué no puedo volar como los pájaros?”<br>
+      —decía, moviendo sus alitas cortas.<br>
+       Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba!<br>
+      —“Mis alas no sirven…”<br>
+      —decía triste.<br>
+      Un día, sin querer, resbaló y cayó al agua.<br>
+       ¡SPLASH! Pipo empezó a mover sus alas…<br>
+       ¡y nadó como un rayo! Giraba, saltaba, se hundía…<br>
+      ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!<br>
+    </div>
   </div>
-  <div class="col-span-2 place-items-end pt-4">
-    @for (idx of numbers; track $index) {
-      <div class="flex items-center mb-2 group">
-        <div
-          [ngClass]="[
-            'relative flex items-center justify-center w-20 h-20 rounded-full transition-colors duration-200',
-            getColorClasses(idx).bg,
-            getColorClasses(idx).hover
-          ]"
-        >
-          <div class="absolute inset-1 bg-black/50 rounded-full flex items-center justify-center cursor-pointer">
-            <span class="text-white font-bold text-4xl">{{ idx + 1 }}</span>
+  <div class="col-span-2">
+    <div class="flex flex-col w-full h-full gap-3 justify-center py-6">
+      @for (idx of numbers; track $index) {
+        <div class="flex-1 flex items-center justify-end group">
+          <div
+            [ngClass]="[
+              'relative w-auto h-full max-h-25 aspect-square rounded-full transition-colors duration-200 transform translate-x-1/2',
+              getColorClasses(idx).bg,
+              getColorClasses(idx).hover
+            ]"
+          >
+            <div class="absolute inset-1 bg-black/50 rounded-full flex items-center justify-center cursor-pointer">
+              <span class="text-white font-bold text-4xl">{{ idx + 1 }}</span>
+            </div>
+          </div>
+          <div
+            [ngClass]="[
+              'h-full max-h-25 w-[35%] min-w-25 transition-colors duration-200 cursor-help',
+              getColorClasses(idx).bg,
+              getColorClasses(idx).hover,
+            ]"
+          >
           </div>
         </div>
-        <div
-          [ngClass]="[
-            'h-20 -ml-10 w-25 transition-colors duration-200 cursor-help',
-            getColorClasses(idx).bg,
-            getColorClasses(idx).hover
-          ]"
-        ></div>
-      </div>
-    }
+      }
+    </div>
   </div>
 </div>

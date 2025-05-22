@@ -4,6 +4,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'chau': ['Chau Philomene One', 'sans-serif'],
+        'hammer': ['Hammersmith One', 'sans-serif'],
+        'winky': ['Winky Rough', 'sans-serif'],
+        'open': ['Open Sans', 'sans-serif'],
+        'passion': ['Passion One', 'sans-serif']
+      },
       strokeWidths: {
         '1': '1px',
         '2': '2px',

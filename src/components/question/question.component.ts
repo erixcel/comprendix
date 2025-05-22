@@ -16,13 +16,13 @@ export class QuestionComponent {
    }
 
    getColorClasses(index: number) {
-     switch (index % 3) {
-       case 0:
-         return { bg: 'bg-green-600', hover: 'hover:bg-green-700' }
-       case 1:
-         return { bg: 'bg-teal-500', hover: 'hover:bg-teal-600' }
-       default:
-         return { bg: 'bg-red-500', hover: 'hover:bg-red-600' }
-     }
+    switch (index % 3) {
+      case 0:
+        return { bg: 'bg-[#4acc23]', hover: 'hover:bg-[#5cdd35]' }
+      case 1:
+        return { bg: 'bg-[#0095a9]', hover: 'hover:bg-[#00a9c0]' }
+      default:
+        return { bg: 'bg-[#e23f30]', hover: 'hover:bg-[#f44f40]' }
+    }
    }
 }
