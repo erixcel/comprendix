@@ -1,24 +1,10 @@
-export interface Configuration {
-  id: string;
-  pdf: Pdf;
-  games: Game[];
-  readings: Reading[];
-}
-
-export interface Pdf {
-  name: string;
-  url: string;
-}
-
-// games
-
-export interface Game {
+export interface BaseGame {
   type: 'memory' | 'puzzle' | 'guess';
   image_url: string;
   points: number;
 }
 
-export interface Memory extends Game {
+export interface Memory extends BaseGame {
   type: 'memory';
   cards: {
     id: string;
@@ -27,12 +13,12 @@ export interface Memory extends Game {
   }[];
 }
 
-export interface Puzzle extends Game {
+export interface Puzzle extends BaseGame {
   type: 'puzzle';
   level: 'easy' | 'medium' | 'hard';
 }
 
-export interface Guess extends Game {
+export interface Guess extends BaseGame {
   type: 'guess';
   cards: {
     id: string;
@@ -41,11 +27,17 @@ export interface Guess extends Game {
   }[];
 }
 
-// readings
+export type Game = Memory | Puzzle | Guess;
+
+export interface Pdf {
+  name: string;
+  url: string;
+}
 
 export interface Reading {
-  id: string;
+  title: string;
   text: string;
+  image_url: string;
   questions: Question[];
 }
 
@@ -54,4 +46,11 @@ export interface Question {
   text: string;
   options: string[];
   answer: number;
+}
+
+export interface Configuration {
+  id: string;
+  pdf: Pdf;
+  games: Game[];
+  readings: Reading[];
 }

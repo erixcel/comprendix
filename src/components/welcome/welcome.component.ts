@@ -1,5 +1,5 @@
+import { NavigationService } from './../../core/services/navigation.service';
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -9,17 +9,18 @@ import { Router } from '@angular/router';
 })
 export class WelcomeComponent {
 
-  private router = inject(Router);
+  private navigationService = inject(NavigationService);
 
-  redirectToOptionReader(): void {
-    this.router.navigate(['content/menu'], { queryParams: { option: 'reading' } }).then(() => {});
+  redirectToReadings(): void {
+    this.navigationService.toReadings();
   }
 
-  redirectToOptionPdf(): void {
-    this.router.navigate(['content/menu'], { queryParams: { option: 'pdf' } }).then(() => {});
+  redirectToGames(): void {
+    this.navigationService.toGames();
   }
 
-  redirectToOptionGrasp(): void {
-    this.router.navigate(['content/menu'], { queryParams: { option: 'games' } }).then(() => {});
+  downloadPdf(): void {
+
   }
+
 }

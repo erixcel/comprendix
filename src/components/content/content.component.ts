@@ -1,3 +1,4 @@
+import { NavigationService } from './../../core/services/navigation.service';
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -14,10 +15,10 @@ export class ContentComponent {
   private readonly yellowLight = '#f5e9a6';
   private readonly yellowDark = '#e6c84c';
 
-  private router = inject(Router);
+  private navigationService = inject(NavigationService);
 
   redirectToSplash(): void {
-    this.router.navigate(['/']).then(() => {});
+    this.navigationService.toSplash();
   }
 
   get backgroundStyle() {

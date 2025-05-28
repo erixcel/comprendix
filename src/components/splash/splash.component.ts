@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-splash',
@@ -23,8 +23,7 @@ export class SplashComponent implements AfterViewInit, OnDestroy {
   private animationId = 0;
   private lastFrameTime = 0;
 
-  private router = inject(Router);
-
+  private navigationService = inject(NavigationService);
 
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
@@ -48,7 +47,7 @@ export class SplashComponent implements AfterViewInit, OnDestroy {
   }
 
   redirectToWelcome(): void {
-    this.router.navigate(['content/welcome']).then(() => {});
+    this.navigationService.toWelcome();
   }
 
   private animate = (timestamp?: number) => {

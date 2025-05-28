@@ -10,24 +10,26 @@
   <!-- Contenido centrado encima de los fondos -->
   <div class="relative z-10 h-full w-full">
     <div class="grid grid-cols-12 h-full">
-      <div class="col-span-12 lg:col-span-9 place-items-center">
-        <div class="text-6xl sm:text-8xl font-winky font-bold text-red-500 text-center text-out-color-red-900 text-out-w-4 m-3 p-3 sm:p-0">
-          MI RINCÓN LECTOR
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full lg:max-w-4xl p-3">
-          @for (item of items; track $index) {
-            <div class="aspect-square w-full bg-contain" style="background-image:url('./avif/box_white.avif');">
-              <div class="flex justify-center items-center p-3 transition-transform duration-300 hover:scale-105">
-                <img class="aspect-square bg-contain w-full cursor-pointer" [src]="item.imageUrl"/>
+      <div class="col-span-12 lg:col-span-9 flex items-center justify-center">
+        <div>
+          <div class="text-6xl sm:text-8xl font-winky font-bold text-red-500 text-center text-out-color-red-900 text-out-w-4 m-3 p-3 sm:p-0">
+            MI RINCÓN LECTOR
+          </div>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full lg:max-w-4xl p-3">
+            @for (item of items; track $index) {
+              <div class="aspect-square w-full bg-contain" style="background-image:url('./avif/box_white.avif');" (click)="redirectToReading()">
+                <div class="flex justify-center items-center p-3 transition-transform duration-300 hover:scale-105">
+                  <img class="aspect-square bg-contain w-full cursor-pointer" [src]="item.imageUrl"/>
+                </div>
               </div>
-            </div>
-          }
+            }
+          </div>
         </div>
       </div>
       <div class="col-span-12 lg:col-span-3 lg:min-h-auto ">
         <div class="h-full relative">
-          <img class="absolute right-0 top-0 h-3/12 w-auto" src="./avif/flags.avif"/>
-          <img class="absolute right-0 bottom-0 h-9/12 w-auto" src="./avif/fox_book.avif"/>
+          <img class="absolute right-0 top-0 h-3/12 object-contain" src="./avif/flags.avif"/>
+          <img class="absolute right-0 bottom-0 h-9/12 object-contain" src="./avif/fox_book.avif"/>
         </div>
       </div>
     </div>

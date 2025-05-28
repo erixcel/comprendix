@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-question',
+  selector: 'app-reading',
   imports: [CommonModule],
-  templateUrl: './question.component.html',
-  styleUrl: './question.component.css'
+  templateUrl: './reading.component.html',
+  styleUrl: './reading.component.css'
 })
-export class QuestionComponent {
+export class ReadingComponent {
 
    items = 6
 
