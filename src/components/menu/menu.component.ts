@@ -56,7 +56,7 @@ export class MenuComponent {
   ];
 
   redirectToReading(): void {
-    this.navigationService.toReading("101");
+    this.navigationService.toReading(0);
   }
 
 }

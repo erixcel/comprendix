@@ -7,6 +7,7 @@ import { MenuComponent } from '../components/menu/menu.component';
 import { ConfigurationGuard } from '../core/guards/configuration.guard';
 import { ReadingComponent } from '../components/reading/reading.component';
 import { GameComponent } from '../components/game/game.component';
+import { QuestionComponent } from '../components/reading/question/question.component';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -14,8 +15,9 @@ export const routes: Routes = [
     children: [
       { path: "welcome", component: WelcomeComponent},
       { path: "menu/:option", component: MenuComponent},
-      { path: "reading/:id", component: ReadingComponent},
-      { path: "game/:id", component: GameComponent},
+      { path: "reading/:index", component: ReadingComponent},
+      { path: "reading/:index/question/:index", component: QuestionComponent},
+      { path: "game/:index", component: GameComponent},
       { path: "", redirectTo: "welcome", pathMatch: "full" }
     ],
   },

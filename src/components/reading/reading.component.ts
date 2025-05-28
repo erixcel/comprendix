@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-reading',
@@ -9,13 +10,15 @@ import { Component } from '@angular/core';
 })
 export class ReadingComponent {
 
-   items = 6
+  private navigationService = inject(NavigationService);
 
-   get numbers(): number[] {
-     return Array.from({ length: this.items }, (_, i) => i)
-   }
+  items = 6
 
-   getColorClasses(index: number) {
+  get numbers(): number[] {
+    return Array.from({ length: this.items }, (_, i) => i)
+  }
+
+  getColorClasses(index: number) {
     switch (index % 3) {
       case 0:
         return { bg: 'bg-[#4acc23]', hover: 'hover:bg-[#5cdd35]' }
@@ -24,5 +27,9 @@ export class ReadingComponent {
       default:
         return { bg: 'bg-[#e23f30]', hover: 'hover:bg-[#f44f40]' }
     }
-   }
+  }
+
+  redirectToQuestion(number: number) {
+    this.navigationService.toQuestion(0, number);
+  }
 }

@@ -38,10 +38,10 @@ export class NavigationService {
     );
   }
 
-  toReading(id: string): void {
+  toReading(index: number): void {
     const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;
     this.router.navigate(
-      ['content', 'reading', id],
+      ['content', 'reading', index],
       { queryParams: { [CONFIG_PARAM]: param } }
     );
   }
@@ -53,5 +53,12 @@ export class NavigationService {
       { queryParams: { [CONFIG_PARAM]: param } }
     );
   }
-  
+
+  toQuestion(indexReading: number, indexQuestion: number): void {
+    const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;
+    this.router.navigate(
+      ['content', 'reading', indexReading, 'question', indexQuestion],
+      { queryParams: { [CONFIG_PARAM]: param } }
+    );
+  }
 }
