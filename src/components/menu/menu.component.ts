@@ -1,59 +1,32 @@
+import { ConfigurationService } from './../../core/services/configuration.service';
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NavigationService } from '../../core/services/navigation.service';
+import { Reading } from '../../core/model/configuration';
 
 @Component({
   selector: 'app-menu',
   imports: [CommonModule],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrl: './menu.component.css',
+  providers: [ConfigurationService]
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
 
   private navigationService = inject(NavigationService);
+  private configurationService = inject(ConfigurationService);
 
-  items = [
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 1',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 2',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 1',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 2',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 1',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 2',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 1',
-      description: 'Descripción breve del libro...'
-    },
-    {
-      imageUrl: 'https://img.pikbest.com/png-images/20240809/a-drawing-of-a-penguin-with-white-face-and-brown-eyes_10712446.png!sw800',
-      title: 'Título del libro 2',
-      description: 'Descripción breve del libro...'
-    },
-  ];
+  items: Reading[] = []
+
+  constructor() {
+
+  }
+
+  ngOnInit(): void {
+    this.configurationService.getConfiguration("000000001").then(config => {
+      this.items = config.readings;
+    })
+  }
 
   redirectToReading(): void {
     this.navigationService.toReading(0);

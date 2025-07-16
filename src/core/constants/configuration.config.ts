@@ -45,7 +45,308 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg",
+      image_url: "./avif/reading/penguin.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/tortoise.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/duck.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/monkey.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/frog.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/parrot.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/bear.avif",
+      questions: [
+        {
+          id: "Q001",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q002",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q003",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q004",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        },
+        {
+          id: "Q005",
+          text: "What is the main idea of the reading?",
+          options: ["Option A", "Option B", "Option C"],
+          answer: 0
+        },
+        {
+          id: "Q006",
+          text: "What is the author's purpose?",
+          options: ["To inform", "To entertain", "To persuade"],
+          answer: 1
+        }
+      ]
+    },
+    {
+      title: "Las alas de Pipo",
+      text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
+      image_url: "./avif/reading/snake.avif",
       questions: [
         {
           id: "Q001",
