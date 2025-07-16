@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { OptionNumberComponent } from '../option-number/option-number.component'; // Importar el nuevo componente
 
 @Component({
   selector: 'app-question',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, OptionNumberComponent], // Agregar el componente a los imports
   templateUrl: './question.component.html',
   styleUrl: './question.component.css'
 })
 export class QuestionComponent {
-  // Variables de ejemplo (puedes reemplazar por @Input() si lo necesitas)
   questionNumber = 0;
-  imageUrl = 'https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2028258_1280.png';
+  imageUrl = 'https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg';
   questionText = '¿Qué quería hacer Pipo?';
   options = [
     'Nadar en el hielo',
@@ -20,12 +21,11 @@ export class QuestionComponent {
   ];
 
   selectedOption: number | null = null;
-  correctOption = 0; // índice de la opción correcta (ejemplo: la primera)
-
-  items = 6
+  correctOption = 1; // Volar como los pájaros
+  items = 6;
 
   get numbers(): number[] {
-    return Array.from({ length: this.items }, (_, i) => i)
+    return Array.from({ length: this.items }, (_, i) => i);
   }
 
   isCurrentQuestion(index: number): boolean {
@@ -38,12 +38,9 @@ export class QuestionComponent {
 
   getColorClasses(index: number) {
     switch (index % 3) {
-      case 0:
-        return { bg: 'bg-[#4acc23]', hover: 'hover:bg-[#5cdd35]' };
-      case 1:
-        return { bg: 'bg-[#0095a9]', hover: 'hover:bg-[#00a9c0]' };
-      default:
-        return { bg: 'bg-[#e23f30]', hover: 'hover:bg-[#f44f40]' };
+      case 0: return { bg: 'bg-[#4acc23]', hover: 'hover:bg-[#5cdd35]' };
+      case 1: return { bg: 'bg-[#0095a9]', hover: 'hover:bg-[#00a9c0]' };
+      default: return { bg: 'bg-[#e23f30]', hover: 'hover:bg-[#f44f40]' };
     }
   }
 
@@ -53,5 +50,10 @@ export class QuestionComponent {
 
   isCorrect(i: number): boolean {
     return i === this.correctOption;
+  }
+
+  redirectToQuestion(index: number) {
+    // Implementar lógica de navegación
+    console.log('Navigate to question:', index);
   }
 }

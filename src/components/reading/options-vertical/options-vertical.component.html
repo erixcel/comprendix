@@ -1,0 +1,12 @@
+<div class="flex flex-col h-full gap-3 justify-center py-6">
+  @for (idx of numbers; track $index) {
+    <div class="flex-1 flex items-center justify-end group w-full" (click)="select.emit(idx)">
+      <app-option-number
+        class="h-full w-full"
+        [number]="idx + 1"
+        [direction]="'left'"
+        [colorClasses]="getColorClasses(idx)"
+      ></app-option-number>
+    </div>
+  }
+</div>
