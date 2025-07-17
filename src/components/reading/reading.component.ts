@@ -3,17 +3,27 @@ import { Component, inject } from '@angular/core';
 import { NavigationService } from '../../core/services/navigation.service';
 import { OptionsVerticalComponent } from './options-vertical/options-vertical.component';
 import { OptionsHorizontalComponent } from './options-horizontal/options-horizontal.component';
+import { ActionsHorizontalComponent } from "../menu/actions-horizontal/actions-horizontal.component";
+import { ActionsVerticalComponent } from "../menu/actions-vertical/actions-vertical.component";
 
 @Component({
   selector: 'app-reading',
   standalone: true,
-  imports: [CommonModule, OptionsVerticalComponent, OptionsHorizontalComponent],
+  imports: [CommonModule, OptionsVerticalComponent, OptionsHorizontalComponent, ActionsVerticalComponent, ActionsHorizontalComponent],
   templateUrl: './reading.component.html',
   styleUrl: './reading.component.css'
 })
 export class ReadingComponent {
   private navigationService = inject(NavigationService);
   items = 6;
+
+  goToHome() {}
+
+  speachText() {}
+
+  goToNext() {}
+
+  goToPrevious() {}
 
   getColorClasses(index: number) {
     switch (index % 3) {

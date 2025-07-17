@@ -1,0 +1,30 @@
+<div class="relative flex items-center justify-start group h-full" [ngClass]="{'flex-row': direction === 'vertical', 'flex-col': direction === 'horizontal'}">
+  <div
+    class="transition-colors duration-200 border-y-8 z-20 w-full"
+    [ngClass]="[
+      colorClasses.bg,
+      colorClasses.border,
+      direction === 'vertical' ? 'h-full max-h-25 w-[35%] min-w-10 max-w-20' : '',
+      direction === 'horizontal' ? 'w-full h-[35%] min-h-20 max-h-30' : ''
+    ]"
+  ></div>
+  @if (direction === 'vertical') {
+    <div
+      class="relative aspect-square rounded-full transition-colors duration-200 z-10 border-8"
+      [ngClass]="[
+        colorClasses.bg,
+        colorClasses.border,
+        'transform -translate-x-1/2 h-full w-auto max-h-25',
+      ]"
+    ></div>
+  }
+
+  <div class="absolute z-30 flex items-center justify-center h-full max-h-25 w-[35%] min-w-10 max-w-20"
+    [ngClass]="[
+      direction === 'vertical' ? 'transform translate-x-1/4' : '',
+      direction === 'horizontal' ? '' : ''
+    ]"
+  >
+    <img class="aspect-square py-2 lg:p-4" [src]="iconUrl" alt="Icon">
+  </div>
+</div>

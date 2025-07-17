@@ -1,11 +1,11 @@
-<div class="flex items-center justify-end group h-full" [ngClass]="{'flex-col': direction === 'top' || direction === 'bottom', 'flex-row': direction === 'left' || direction === 'right'}">
+<div class="relative flex items-center justify-end group h-full" [ngClass]="{'flex-row': direction === 'vertical', 'flex-col': direction === 'horizontal'}">
   <div
     class="relative aspect-square rounded-full transition-colors duration-200 z-10"
     [ngClass]="[
       colorClasses.bg,
       colorClasses.hover,
-      direction === 'left' || direction === 'right' ? 'transform translate-x-1/2 h-full w-auto max-h-25' : '',
-      direction === 'top' || direction === 'bottom' ? 'transform translate-y-1/2 w-full h-auto max-w-25' : ''
+      direction === 'vertical' ? 'transform translate-x-1/2 h-full max-h-25 w-auto' : '',
+      direction === 'horizontal' ? 'transform translate-y-1/2 w-full max-w-25 h-auto' : ''
     ]"
   >
     <div class="absolute inset-1 bg-black/50 rounded-full flex items-center justify-center">
@@ -13,12 +13,12 @@
     </div>
   </div>
   <div
-    class="transition-colors duration-200"
+    class="relative transition-colors duration-200"
     [ngClass]="[
       colorClasses.bg,
       colorClasses.hover,
-      direction === 'left' || direction === 'right' ? 'h-full max-h-25 w-[35%] min-w-10 max-w-20' : '',
-      direction === 'top' || direction === 'bottom' ? 'w-full max-w-25 h-[35%] min-h-20 max-h-30' : ''
+      direction === 'vertical' ? 'h-full max-h-25 w-[35%] min-w-10 max-w-20' : '',
+      direction === 'horizontal' ? 'w-full max-w-25 h-[35%] min-h-20 max-h-30' : ''
     ]"
   ></div>
 </div>

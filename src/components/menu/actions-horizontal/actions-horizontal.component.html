@@ -1,0 +1,13 @@
+<div class="flex flex-row w-full justify-center items-center">
+  @for (action of actions; track $index) {
+    @if (actionHandlers[action.name]) {
+        <app-action-item
+        class="h-full w-full"
+        [iconUrl]="action.iconUrl"
+        [direction]="'horizontal'"
+        [colorClasses]="action.classes"
+        [handler]="actionHandlers[action.name]">
+      ></app-action-item>
+    }
+  }
+</div>

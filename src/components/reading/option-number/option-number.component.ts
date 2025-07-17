@@ -10,6 +10,6 @@ import { Component, Input } from '@angular/core';
 })
 export class OptionNumberComponent {
   @Input() number!: number;
-  @Input() direction: 'left' | 'right' | 'top' | 'bottom' = 'left';
+  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Input() colorClasses!: { bg: string, hover: string };
 }
