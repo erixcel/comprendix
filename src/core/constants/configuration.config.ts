@@ -45,7 +45,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/penguin.avif",
+      image_url: "./avif/menu/penguin.avif",
       questions: [
         {
           id: "Q001",
@@ -88,7 +88,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/tortoise.avif",
+      image_url: "./avif/menu/tortoise.avif",
       questions: [
         {
           id: "Q001",
@@ -131,7 +131,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/duck.avif",
+      image_url: "./avif/menu/duck.avif",
       questions: [
         {
           id: "Q001",
@@ -174,7 +174,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/monkey.avif",
+      image_url: "./avif/menu/monkey.avif",
       questions: [
         {
           id: "Q001",
@@ -217,7 +217,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/frog.avif",
+      image_url: "./avif/menu/frog.avif",
       questions: [
         {
           id: "Q001",
@@ -260,7 +260,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/parrot.avif",
+      image_url: "./avif/menu/parrot.avif",
       questions: [
         {
           id: "Q001",
@@ -303,7 +303,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/bear.avif",
+      image_url: "./avif/menu/bear.avif",
       questions: [
         {
           id: "Q001",
@@ -346,7 +346,7 @@ export const configuration: Configuration = {
     {
       title: "Las alas de Pipo",
       text: "Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba. —\"¿Por qué no puedo volar como los pájaros?\" —decía, moviendo sus alitas cortas. Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba! —\"Mis alas no sirven…\" —decía triste. Un día, sin querer, resbaló y cayó al agua. ¡SPLASH! Pipo empezó a mover sus alas… ¡y nadó como un rayo! Giraba, saltaba, se hundía… ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!",
-      image_url: "./avif/reading/snake.avif",
+      image_url: "./avif/menu/snake.avif",
       questions: [
         {
           id: "Q001",

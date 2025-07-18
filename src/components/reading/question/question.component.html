@@ -11,12 +11,12 @@
       <div class="flex-0 flex flex-col h-full">
         @for (idx of numbers; track $index) {
           <div class="flex-1 flex items-center justify-end group"
-               [ngClass]="{ 'invisible': !isCurrentQuestion(idx) }"
-               (click)="redirectToQuestion(idx)">
+            [ngClass]="{ 'invisible': !isCurrentQuestion(idx) }"
+            (click)="redirectToQuestion(idx)">
             <app-option-number
               class="h-full w-full"
               [number]="idx + 1"
-              [direction]="'horizontal'"
+              [direction]="'vertical'"
               [colorClasses]="getColorClasses(idx)"
             ></app-option-number>
           </div>
