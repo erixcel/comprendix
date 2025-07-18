@@ -16,11 +16,11 @@
             MI RINCÓN LECTOR
           </div>
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full lg:max-w-4xl p-12 lg:p-3">
-            @for (item of items; track $index) {
-              <div class="aspect-square w-full bg-contain" style="background-image:url('./avif/decoration/box_white.avif');" (click)="redirectToReading()">
+            @for (reading of readings; track $index) {
+              <div class="aspect-square w-full bg-contain" style="background-image:url('./avif/decoration/box_white.avif');" (click)="redirectToReading($index)">
                 <div class="flex justify-center items-center h-full p-3 transition-transform duration-300 hover:scale-105">
                   <div class="aspect-square">
-                    <img class="w-full h-full object-contain cursor-pointer" [src]="item.image_url"/>
+                    <img class="w-full h-full object-contain cursor-pointer" [src]="reading.image_url_menu"/>
                   </div>
                 </div>
               </div>

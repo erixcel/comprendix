@@ -61,4 +61,32 @@ export class NavigationService {
       { queryParams: { [CONFIG_PARAM]: param } }
     );
   }
+
+  getIndexReading(): number | null {
+    return this.getIndexFromRoute('reading');
+  }
+
+  getIndexQuestion(): number | null {
+    return this.getIndexFromRoute('question');
+  }
+
+  private getIndexFromRoute(segmentName: string): number | null {
+
+    let currentRoute: ActivatedRoute | null = this.router.routerState.root;
+
+    while (currentRoute?.firstChild) {
+        currentRoute = currentRoute.firstChild;
+    }
+
+    if (!currentRoute) return null;
+
+    const segments = currentRoute.snapshot.pathFromRoot.flatMap(r => r.url.map(segment => segment.path)) || [];
+
+    const targetIndex = segments.findIndex(seg => seg === segmentName);
+    if (targetIndex !== -1 && segments.length > targetIndex + 1) {
+      const value = Number(segments[targetIndex + 1]);
+      return isNaN(value) ? null : value;
+    }
+    return null;
+  }
 }

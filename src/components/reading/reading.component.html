@@ -1,5 +1,5 @@
 <div class="grid grid-cols-12 w-full h-full">
-  <div class="col-span-12 lg:col-span-12 xl:col-span-2 order-1 lg:order-1">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
     <div class="hidden xl:block h-full">
       <app-actions-vertical
         class="h-full"
@@ -23,31 +23,19 @@
       ></app-actions-horizontal>
     </div>
   </div>
-  <div class="col-span-12 lg:col-span-4 xl:col-span-3 order-3 lg:order-2 p-6">
-    <div class="flex items-center justify-center relative lg:h-full">
-      <div class="w-full aspect-square lg:aspect-auto lg:h-full lg:relative">
-        <img class="w-full h-full absolute object-contain" src="https://i.pinimg.com/736x/0e/9b/85/0e9b85e55146d9d392fdcee403d66c41.jpg" alt="Paisaje">
-        <img class="w-full h-full absolute" src="./avif/decoration/picture_frame.avif" alt="Marco">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-8 grid grid-cols-12 xl:space-x-12">
+    <div class="col-span-12 lg:col-span-4 xl:col-span-4 order-2 lg:order-1 p-6 xl:p-0">
+      <div class="flex items-center justify-center relative lg:h-full">
+        <img class="w-full aspect-auto" [src]="reading?.image_url_text" alt="Image">
       </div>
     </div>
-  </div>
 
-  <div class="col-span-12 lg:col-span-8 xl:col-span-5 order-2 lg:order-3 flex flex-col justify-center items-center p-6">
-    <div class="font-passion text-center text-6xl mt-3 mb-6">Las alas de Pipo</div>
-    <div class="font-open font-bold text-2xl">Pipo era un pingüino curioso. Cada día miraba al cielo y suspiraba.<br>
-      —“¿Por qué no puedo volar como los pájaros?”<br>
-      —decía, moviendo sus alitas cortas.<br>
-       Saltó desde rocas, se subió a montones de nieve… ¡Pero nunca despegaba!<br>
-      —“Mis alas no sirven…”<br>
-      —decía triste.<br>
-      Un día, sin querer, resbaló y cayó al agua.<br>
-       ¡SPLASH! Pipo empezó a mover sus alas…<br>
-       ¡y nadó como un rayo! Giraba, saltaba, se hundía…<br>
-      ¡Estaba volando bajo el agua! Desde entonces, ya no quiso volar por el cielo. Porque descubrió que sus alas sí servían… ¡y eran perfectas para nadar!<br>
+    <div class="col-span-12 lg:col-span-8 xl:col-span-8 order-1 lg:order-2 flex flex-col justify-center items-center p-6 xl:p-0">
+      <div class="font-passion text-center text-6xl mt-3 mb-6">{{reading?.title}}</div>
+      <div class="font-open font-bold text-lg">{{reading?.text}}</div>
     </div>
   </div>
-
-  <div class="col-span-12 xl:col-span-2 order-4">
+  <div class="col-span-12 xl:col-span-2">
     <div class="hidden xl:block h-full">
       <app-options-vertical
         class="h-full"

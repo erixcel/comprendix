@@ -5,17 +5,40 @@ import { OptionsVerticalComponent } from './options-vertical/options-vertical.co
 import { OptionsHorizontalComponent } from './options-horizontal/options-horizontal.component';
 import { ActionsHorizontalComponent } from "../menu/actions-horizontal/actions-horizontal.component";
 import { ActionsVerticalComponent } from "../menu/actions-vertical/actions-vertical.component";
+import { Reading } from '../../core/model/configuration';
+import { ConfigurationService } from '../../core/services/configuration.service';
 
 @Component({
   selector: 'app-reading',
-  standalone: true,
   imports: [CommonModule, OptionsVerticalComponent, OptionsHorizontalComponent, ActionsVerticalComponent, ActionsHorizontalComponent],
   templateUrl: './reading.component.html',
-  styleUrl: './reading.component.css'
+  providers: [ConfigurationService]
 })
 export class ReadingComponent {
   private navigationService = inject(NavigationService);
-  items = 6;
+  private configurationService = inject(ConfigurationService);
+
+  reading?: Reading;
+  items = 6
+
+  constructor() {
+
+  }
+
+  ngOnInit(): void {
+    this.configurationService.getConfiguration("000000001").then(config => {
+      const indexReading = this.navigationService.getIndexReading();
+      if (indexReading !== null) {
+        this.reading = config.readings[indexReading];
+      }
+
+    })
+    setTimeout(() => {
+
+      console.log('Han pasado 3 segundos');
+
+    }, 3000);
+  }
 
   goToHome() {}
 

@@ -37,13 +37,16 @@ export interface Pdf {
 export interface Reading {
   title: string;
   text: string;
-  image_url: string;
+  phrase: string;
+  image_url_menu: string;
+  image_url_text: string;
   questions: Question[];
 }
 
 export interface Question {
   id: string;
   text: string;
+  image_url: string;
   options: string[];
   answer: number;
 }

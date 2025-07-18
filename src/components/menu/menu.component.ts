@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
 
-  items: Reading[] = []
+  readings: Reading[] = []
 
   constructor() {
 
@@ -24,12 +24,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
-      this.items = config.readings;
+      this.readings = config.readings;
     })
   }
 
-  redirectToReading(): void {
-    this.navigationService.toReading(0);
+  redirectToReading(index: number): void {
+    this.navigationService.toReading(index);
   }
 
 }

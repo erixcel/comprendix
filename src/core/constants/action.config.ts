@@ -23,13 +23,13 @@ export const actions = [
     classes: { bg: 'bg-red-500', border: 'border-red-700' },
   },
   {
-    name: 'next',
-    iconUrl: './icons/ic_next.svg',
-    classes: { bg: 'bg-yellow-500', border: 'border-yellow-700' },
-  },
-  {
     name: 'previous',
     iconUrl: './icons/ic_previous.svg',
     classes: { bg: 'bg-blue-500', border: 'border-blue-700' },
+  },
+  {
+    name: 'next',
+    iconUrl: './icons/ic_next.svg',
+    classes: { bg: 'bg-yellow-500', border: 'border-yellow-700' },
   },
 ] as const;
