@@ -12,11 +12,13 @@ import { ConfigurationService } from '../../core/services/configuration.service'
   selector: 'app-reading',
   imports: [CommonModule, OptionsVerticalComponent, OptionsHorizontalComponent, ActionsVerticalComponent, ActionsHorizontalComponent],
   templateUrl: './reading.component.html',
-  providers: [ConfigurationService]
+  styleUrls: ['./reading.component.css'],
 })
 export class ReadingComponent {
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
+
+  indexReading: number | null = null;
 
   reading?: Reading;
   items = 6
@@ -27,26 +29,28 @@ export class ReadingComponent {
 
   ngOnInit(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
-      const indexReading = this.navigationService.getIndexReading();
-      if (indexReading !== null) {
-        this.reading = config.readings[indexReading];
+      this.indexReading = this.navigationService.getIndexReading();
+      if (this.indexReading !== null) {
+        this.reading = config.readings[this.indexReading];
       }
-
     })
-    setTimeout(() => {
-
-      console.log('Han pasado 3 segundos');
-
-    }, 3000);
   }
 
-  goToHome() {}
+  goToHome() {
+    this.navigationService.toWelcome();
+  }
 
-  speachText() {}
+  speachText() {
 
-  goToNext() {}
+  }
 
-  goToPrevious() {}
+  goToNext() {
+    this.navigationService.toQuestion(this.indexReading || 0, 0);
+  }
+
+  goToPrevious() {
+    this.navigationService.toReadings();
+  }
 
   getColorClasses(index: number) {
     switch (index % 3) {

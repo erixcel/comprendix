@@ -1,7 +1,9 @@
 import { catchError, from, map, Observable, throwError } from 'rxjs';
 import { Configuration } from './../model/configuration';
 import { LOCAL_ID } from '../constants/configuration.config';
+import { Injectable } from '@angular/core';
 
+@Injectable({ providedIn: 'root' })
 export class ConfigurationService {
 
   constructor() {

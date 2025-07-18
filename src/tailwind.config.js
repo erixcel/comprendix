@@ -9,7 +9,8 @@ module.exports = {
         'hammer': ['Hammersmith One', 'sans-serif'],
         'winky': ['Winky Rough', 'sans-serif'],
         'open': ['Open Sans', 'sans-serif'],
-        'passion': ['Passion One', 'sans-serif']
+        'passion': ['Passion One', 'sans-serif'],
+        'russo': ['Russo One', 'sans-serif'],
       },
       strokeWidths: {
         '1': '1px',

@@ -1,6 +1,6 @@
 <div class="relative flex items-center justify-end group h-full" [ngClass]="{'flex-row': direction === 'vertical', 'flex-col': direction === 'horizontal'}">
   <div
-    class="relative aspect-square rounded-full transition-colors duration-200 z-10"
+    class="relative aspect-square rounded-full transition-colors duration-200 z-10 cursor-pointer"
     [ngClass]="[
       colorClasses.bg,
       colorClasses.hover,
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div
-    class="relative transition-colors duration-200"
+    class="relative transition-colors duration-200 cursor-pointer"
     [ngClass]="[
       colorClasses.bg,
       colorClasses.hover,

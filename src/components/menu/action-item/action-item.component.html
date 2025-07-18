@@ -1,6 +1,6 @@
 <div class="relative flex items-center justify-start group h-full" [ngClass]="{'flex-row': direction === 'vertical', 'flex-col': direction === 'horizontal'}">
   <div
-    class="transition-colors duration-200 border-y-8 z-20 w-full"
+    class="transition-colors duration-200 border-y-8 z-20 w-full cursor-pointer"
     [ngClass]="[
       colorClasses.bg,
       colorClasses.border,
@@ -10,7 +10,7 @@
   ></div>
   @if (direction === 'vertical') {
     <div
-      class="relative aspect-square rounded-full transition-colors duration-200 z-10 border-8"
+      class="relative aspect-square rounded-full transition-colors duration-200 z-10 border-8 cursor-pointer"
       [ngClass]="[
         colorClasses.bg,
         colorClasses.border,
@@ -19,7 +19,7 @@
     ></div>
   }
 
-  <div class="absolute z-30 flex items-center justify-center h-full max-h-25 w-[35%] min-w-10 max-w-20"
+  <div class="absolute z-30 flex items-center justify-center h-full max-h-25 w-[35%] min-w-10 max-w-20 cursor-pointer"
     [ngClass]="[
       direction === 'vertical' ? 'transform translate-x-1/4' : '',
       direction === 'horizontal' ? '' : ''
