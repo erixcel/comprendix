@@ -45,12 +45,12 @@
               </span>
             </div>
            <div class="flex-1 flex flex-col space-y-4">
-              @for (option of question?.options; track $index; let i = $index) {
+              @for (option of question?.options; track $index) {
                 <div class="flex-1">
                   <button
-                    class="w-full text-left border-2 border-black rounded-xl px-4 py-3 text-2xl font-russo transition cursor-pointer {{ getOptionClass(i) }}"
-                    (click)="selectOption(i)">
-                    <span class="font-bold">{{ getOptionLetter(i) }} )</span> {{ option }}
+                    class="w-full text-left border-2 border-black rounded-xl px-4 py-3 text-2xl font-russo transition cursor-pointer {{ getOptionClass($index) }}"
+                    (click)="selectOption($index)">
+                    <span class="font-bold">{{ getOptionLetter($index) }} )</span> {{ option }}
                   </button>
                 </div>
               }

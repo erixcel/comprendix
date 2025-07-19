@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ModalPhraseComponent } from "../reading/modal-phrase/modal-phrase.component";
 
 @Component({
   selector: 'app-content',
