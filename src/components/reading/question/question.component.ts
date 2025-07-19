@@ -5,7 +5,7 @@ import { ActionsHorizontalComponent } from "../../menu/actions-horizontal/action
 import { ActionsVerticalComponent } from "../../menu/actions-vertical/actions-vertical.component"; // Importar el nuevo componente
 import { NavigationService } from '../../../core/services/navigation.service';
 import { ConfigurationService } from '../../../core/services/configuration.service';
-import { Question } from '../../../core/model/configuration';
+import { Configuration, Question } from '../../../core/model/configuration';
 
 @Component({
   selector: 'app-question',
@@ -17,6 +17,7 @@ export class QuestionComponent {
 
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
+  private configuration: Configuration | null = null;
 
   indexReading: number | null = null;
   indexQuestion: number | null = null;
@@ -28,6 +29,7 @@ export class QuestionComponent {
 
   ngOnInit(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
+      this.configuration = config;
       this.indexReading = this.navigationService.getIndexReading();
       this.indexQuestion = this.navigationService.getIndexQuestion();
       if (this.indexReading !== null && this.indexQuestion !== null) {
@@ -65,13 +67,27 @@ export class QuestionComponent {
     return '';
   }
 
-  goToHome() {}
+  goToHome = () => {
+    this.navigationService.toReadings();
+  }
 
-  speachText() {}
+  speachText = () => {
 
-  goToNext() {}
+  }
 
-  goToPrevious() {}
+  goToNext = () => {
+
+  }
+
+  goToPrevious = () => {
+    if (this.configuration && this.indexReading !== null && this.indexReading > 0) {
+      const indexReadingPrevious = this.indexReading - 1;
+      const indexQuestionPrevious = this.configuration.readings[indexReadingPrevious]?.questions?.length ? this.configuration.readings[indexReadingPrevious].questions.length - 1 : 0;
+      this.navigationService.toQuestion(indexReadingPrevious, indexQuestionPrevious);
+    } else {
+      this.navigationService.toReadings();
+    }
+  }
 
 
   getColorClasses(index: number | null) {

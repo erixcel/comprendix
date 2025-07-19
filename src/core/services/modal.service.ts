@@ -6,12 +6,10 @@ export class ModalService {
 
   private modalPhraseState = new BehaviorSubject<{
     isOpen: boolean,
-    title: string,
     content: string,
     foxType: number
   }>({
     isOpen: false,
-    title: '',
     content: '',
     foxType: 1
   });
@@ -20,10 +18,9 @@ export class ModalService {
 
   constructor() { }
 
-  openModalPhrase(title: string, content: string, foxType: number = 1) {
+  openModalPhrase(content: string, foxType: number = 1) {
     this.modalPhraseState.next({
       isOpen: true,
-      title,
       content,
       foxType
     });

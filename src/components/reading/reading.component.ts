@@ -1,3 +1,5 @@
+import { configuration } from './../../core/constants/configuration.config';
+import { ModalService } from './../../core/services/modal.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationService } from '../../core/services/navigation.service';
@@ -5,8 +7,9 @@ import { OptionsVerticalComponent } from './options-vertical/options-vertical.co
 import { OptionsHorizontalComponent } from './options-horizontal/options-horizontal.component';
 import { ActionsHorizontalComponent } from "../menu/actions-horizontal/actions-horizontal.component";
 import { ActionsVerticalComponent } from "../menu/actions-vertical/actions-vertical.component";
-import { Reading } from '../../core/model/configuration';
+import { Configuration, Reading } from '../../core/model/configuration';
 import { ConfigurationService } from '../../core/services/configuration.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-reading',
@@ -17,6 +20,10 @@ import { ConfigurationService } from '../../core/services/configuration.service'
 export class ReadingComponent {
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
+  private modalService = inject(ModalService);
+  private configuration: Configuration | null = null;
+  private destroy$ = new Subject<void>();
+
 
   indexReading: number | null = null;
 
@@ -28,7 +35,10 @@ export class ReadingComponent {
   }
 
   ngOnInit(): void {
+    this.navigationService.speechControl$.pipe(takeUntil(this.destroy$)).subscribe();
+
     this.configurationService.getConfiguration("000000001").then(config => {
+      this.configuration = config;
       this.indexReading = this.navigationService.getIndexReading();
       if (this.indexReading !== null) {
         this.reading = config.readings[this.indexReading];
@@ -36,20 +46,40 @@ export class ReadingComponent {
     })
   }
 
-  goToHome() {
-    this.navigationService.toWelcome();
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  speachText() {
-
-  }
-
-  goToNext() {
-    this.navigationService.toQuestion(this.indexReading || 0, 0);
-  }
-
-  goToPrevious() {
+  goToHome = () => {
     this.navigationService.toReadings();
+  }
+
+  speachText = () => {
+    this.navigationService.cancelSpeech();
+    if ('speechSynthesis' in window && this.reading?.text) {
+      const utterance = new SpeechSynthesisUtterance(this.reading.text);
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  goToNext = () => {
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
+    this.modalService.openModalPhrase(this.reading?.phrase || '', randomNumber);
+    setTimeout(() => {
+      this.modalService.closeModalPhrase();
+      this.navigationService.toQuestion(this.indexReading || 0, 0);
+    }, 3000);
+  }
+
+  goToPrevious = () => {
+    if (this.configuration && this.indexReading !== null && this.indexReading > 0) {
+      const indexReadingPrevious = this.indexReading - 1;
+      const indexQuestionPrevious = this.configuration.readings[indexReadingPrevious]?.questions?.length ? this.configuration.readings[indexReadingPrevious].questions.length - 1 : 0;
+      this.navigationService.toQuestion(indexReadingPrevious, indexQuestionPrevious);
+    } else {
+      this.navigationService.toReadings();
+    }
   }
 
   getColorClasses(index: number) {
@@ -61,6 +91,6 @@ export class ReadingComponent {
   }
 
   redirectToQuestion(number: number) {
-    this.navigationService.toQuestion(0, number);
+    this.navigationService.toQuestion(this.indexReading || 0, number);
   }
 }

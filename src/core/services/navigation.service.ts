@@ -1,13 +1,30 @@
 import { inject, Injectable } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { CONFIG_PARAM, LOCAL_ID } from '../constants/configuration.config';
+import { filter, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
 
-
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+
+  speechControl$ = new Subject<void>();
+
+  constructor() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe(() => {
+      this.cancelSpeech();
+    });
+  }
+
+  cancelSpeech(): void {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    this.speechControl$.next();
+  }
 
   toSplash(): void {
     const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;

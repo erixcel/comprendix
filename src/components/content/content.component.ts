@@ -7,7 +7,7 @@ import { ModalPhraseComponent } from "../reading/modal-phrase/modal-phrase.compo
 
 @Component({
   selector: 'app-content',
-  imports: [RouterOutlet, FormsModule, CommonModule],
+  imports: [RouterOutlet, FormsModule, CommonModule, ModalPhraseComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })

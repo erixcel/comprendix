@@ -76,16 +76,16 @@ Desde entonces, nadie volvió a reírse de su paso lento. Porque descubrieron qu
         "Que todos somos valiosos a nuestra manera"
       ],
     },
-    {
-      id: "5",
-      text: "¿Por qué Luna fue una heroína en el cuento?",
-      image_url: "./avif/question/question_tortoise_6.avif",
-      answer: 1,
-      options: [
-        "Porque era la más rápida del bosque",
-        "Porque salvó a los animales durante la tormenta",
-        "Porque tenía una capa mágica"
-      ],
-    }
+    // {
+    //   id: "5",
+    //   text: "¿Por qué Luna fue una heroína en el cuento?",
+    //   image_url: "./avif/question/question_tortoise_6.avif",
+    //   answer: 1,
+    //   options: [
+    //     "Porque era la más rápida del bosque",
+    //     "Porque salvó a los animales durante la tormenta",
+    //     "Porque tenía una capa mágica"
+    //   ],
+    // }
   ],
 }

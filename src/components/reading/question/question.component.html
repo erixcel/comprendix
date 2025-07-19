@@ -24,12 +24,12 @@
     </div>
   </div>
   <div class="col-span-12 lg:col-span-12 xl:col-span-10 grid grid-cols-12 xl:space-x-12">
-    <div class="col-span-12 lg:col-span-4 xl:col-span-4 order-2 lg:order-1 p-12 lg:p-0 ">
+    <div class="col-span-12 lg:col-span-4 xl:col-span-4 order-2 lg:order-1 p-12 lg:p-0">
       <div class="flex items-center justify-center relative lg:h-full">
-        <img class="w-full aspect-auto" [src]="question?.image_url" alt="Image">
+        <img class="w-full h-auto lg:max-h-[35rem] lg:w-auto object-contain" [src]="question?.image_url" alt="Image">
       </div>
     </div>
-    <div class="col-span-12 lg:col-span-8 xl:col-span-8 order-1 lg:order-2 place-content-end h-full pt-6 lg:pt-12">
+    <div class="col-span-12 lg:col-span-8 xl:col-span-8 order-1 lg:order-2 place-content-end h-full pt-6 lg:pt-6">
       <div class="flex justify-center items-start h-full">
         <app-option-number
           class="h-20 hidden xl:block"
@@ -38,7 +38,7 @@
           [colorClasses]="getColorClasses(indexQuestion)"
         ></app-option-number>
         <div class="flex-1 p-8 h-full" [class]="getColorClasses(indexQuestion).bg">
-          <div class="bg-white flex flex-col h-full p-12 gap-2">
+          <div class="bg-white flex flex-col h-full px-12 py-6 gap-2">
             <div class="flex items-center pt-4 pb-6">
               <span class="block text-2xl md:text-4xl font-russo text-blue-700">
                 <span class="xl:hidden inline">{{ (indexQuestion || 0) + 1 }}. </span>{{ question?.text }}

@@ -15,7 +15,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "0",
       text: "¿Qué quería construir Tico en el árbol más alto de la selva?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_1.avif",
       answer: 2,
       options: [
         "Un columpio gigante",
@@ -27,7 +27,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "1",
       text: "¿Qué dijo Tico cuando los animales se ofrecieron a ayudarlo?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_2.avif",
       answer: 1,
       options: [
         "¡Qué buena idea!",
@@ -39,7 +39,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "2",
       text: "¿Qué animal voló hacia Tico para ofrecerle ayuda después del accidente?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_3.avif",
       answer: 2,
       options: [
         "El oso",
@@ -51,7 +51,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "3",
       text: "¿Por qué la casa de Tico se cayó la primera vez?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_4.avif",
       answer: 1,
       options: [
         "Porque era de cartón",
@@ -62,7 +62,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "4",
       text: "¿Qué enseña esta historia sobre el trabajo en equipo?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_5.avif",
       answer: 2,
       options: [
         "Que es más rápido trabajar solo",
@@ -73,7 +73,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
     {
       id: "5",
       text: "¿Cómo se siente Tico al final de la historia?",
-      image_url: "",
+      image_url: "./avif/question/question_monkey_6.avif",
       answer: 0,
       options: [
         "Agradecido y feliz por la ayuda de sus amigos",
