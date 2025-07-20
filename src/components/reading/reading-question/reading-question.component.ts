@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { OptionNumberComponent } from '../option-number/option-number.component';
-import { ActionsHorizontalComponent } from "../../menu/actions-horizontal/actions-horizontal.component";
-import { ActionsVerticalComponent } from "../../menu/actions-vertical/actions-vertical.component"; // Importar el nuevo componente
+import { OptionNumberComponent } from '../../shared/option-number/option-number.component';
 import { NavigationService } from '../../../core/services/navigation.service';
 import { ConfigurationService } from '../../../core/services/configuration.service';
 import { Configuration, Question } from '../../../core/model/configuration';
+import { ActionsHorizontalComponent } from '../../shared/actions-horizontal/actions-horizontal.component';
+import { ActionsVerticalComponent } from '../../shared/actions-vertical/actions-vertical.component';
 
 @Component({
-  selector: 'app-question',
-  imports: [CommonModule, OptionNumberComponent, ActionsHorizontalComponent, ActionsVerticalComponent], // Agregar el componente a los imports
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css'],
+  selector: 'app-reading-question',
+  imports: [CommonModule, OptionNumberComponent, ActionsHorizontalComponent, ActionsVerticalComponent],
+  templateUrl: './reading-question.component.html',
+  styleUrls: ['./reading-question.component.css'],
 })
-export class QuestionComponent {
+export class ReadingQuestionComponent {
 
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
@@ -28,6 +28,13 @@ export class QuestionComponent {
   showCorrectAnswer = false;
 
   ngOnInit(): void {
+    this.loadData();
+    this.navigationService.path$.subscribe(() => {
+      this.loadData();
+    });
+  }
+
+  loadData(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
       this.configuration = config;
       this.indexReading = this.navigationService.getIndexReading();
@@ -40,20 +47,15 @@ export class QuestionComponent {
   }
 
   selectOption(optionIndex: number): void {
-    // Si ya se mostró la respuesta correcta, no hacer nada
     if (this.showCorrectAnswer) return;
-
-    // Marcar la opción seleccionada
     this.selectedOptions[optionIndex] = true;
-
-    // Si es la respuesta correcta, marcarla como tal
     if (optionIndex === this.correctAnswerIndex) {
       this.showCorrectAnswer = true;
     }
   }
 
   getOptionLetter(index: number): string {
-    return String.fromCharCode(65 + index); // Convierte 0->A, 1->B, etc.
+    return String.fromCharCode(65 + index);
   }
 
   getOptionClass(optionIndex: number) {
@@ -71,24 +73,32 @@ export class QuestionComponent {
     this.navigationService.toReadings();
   }
 
-  speachText = () => {
-
-  }
-
-  goToNext = () => {
-
+  goToReading = () => {
+    this.navigationService.toReading(this.indexReading || 0);
   }
 
   goToPrevious = () => {
-    if (this.configuration && this.indexReading !== null && this.indexReading > 0) {
-      const indexReadingPrevious = this.indexReading - 1;
-      const indexQuestionPrevious = this.configuration.readings[indexReadingPrevious]?.questions?.length ? this.configuration.readings[indexReadingPrevious].questions.length - 1 : 0;
-      this.navigationService.toQuestion(indexReadingPrevious, indexQuestionPrevious);
-    } else {
-      this.navigationService.toReadings();
+    if (this.configuration && this.indexReading !== null && this.indexQuestion !== null) {
+      if (this.indexQuestion > 0) {
+        const indexQuestionPrevious = this.indexQuestion - 1;
+        this.navigationService.toQuestion(this.indexReading, indexQuestionPrevious);
+      } else {
+        this.navigationService.toReading(this.indexReading);
+      }
     }
   }
 
+  goToNext = () => {
+    if (this.configuration && this.indexReading !== null && this.indexQuestion !== null) {
+      const questions = this.configuration.readings[this.indexReading].questions;
+      if (this.indexQuestion < questions.length - 1) {
+        const indexQuestionNext = this.indexQuestion + 1;
+        this.navigationService.toQuestion(this.indexReading, indexQuestionNext);
+      } else {
+        this.navigationService.toReading(this.indexReading + 1);
+      }
+    }
+  }
 
   getColorClasses(index: number | null) {
     switch (index ? index % 3 : 0) {

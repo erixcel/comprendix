@@ -1,17 +1,17 @@
-import { ConfigurationService } from './../../core/services/configuration.service';
+import { ConfigurationService } from '../../../core/services/configuration.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { NavigationService } from '../../core/services/navigation.service';
-import { Reading } from '../../core/model/configuration';
+import { NavigationService } from '../../../core/services/navigation.service';
+import { Reading } from '../../../core/model/configuration';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-reading-menu',
   imports: [CommonModule],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css',
+  templateUrl: './reading-menu.component.html',
+  styleUrl: './reading-menu.component.css',
   providers: [ConfigurationService]
 })
-export class MenuComponent implements OnInit {
+export class ReadingMenuComponent implements OnInit {
 
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);

@@ -1,0 +1,107 @@
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
+    <div class="hidden xl:block h-full">
+      <app-actions-vertical
+        class="h-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-vertical>
+    </div>
+    <div class="xl:hidden w-full">
+      <app-actions-horizontal
+        class="w-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-horizontal>
+    </div>
+  </div>
+  <div class="col-span-12 lg:col-span-12 xl:col-span-7 grid grid-cols-12 xl:space-x-12">
+    <div class="col-span-12 lg:col-span-5 xl:col-span-5 order-2 lg:order-1 p-6 xl:p-0 flex justify-center items-center">
+      <div class="bg-white rounded-lg shadow-lg p-4 h-fit flex-1">
+        <h3 class="text-xl font-russo mb-4 text-center text-gray-700">
+          Piezas Disponibles
+        </h3>
+
+        <div
+          class="grid grid-cols-3 gap-2 min-h-64 border-2 border-dashed border-gray-300 rounded-lg p-3"
+          (dragover)="onDragOver($event)"
+          (drop)="onDropToAvailablePieces($event)">
+
+          @for (piece of getAvailablePieces(); track piece) {
+            <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md cursor-move hover:shadow-lg transition-shadow duration-200 border-2 border-gray-200 aspect-square"
+                draggable="true"
+                (dragstart)="onDragStart($event, piece)">
+              <div
+                class="w-full h-full"
+                [ngStyle]="getPieceBackgroundStyle(piece)">
+              </div>
+            </div>
+          }
+        </div>
+
+        <button
+          (click)="resetGame()"
+          class="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-russo py-3 px-4 rounded-lg transition-colors duration-200">
+          Reiniciar Juego
+        </button>
+      </div>
+    </div>
+
+    <div class="col-span-12 lg:col-span-7 xl:col-span-7 order-1 lg:order-2 flex flex-col justify-center items-center p-6 xl:p-0">
+        <div class="text-lg sm:text-4xl font-winky font-bold text-red-500 text-center text-out-color-red-900 text-out-w-3 m-3 p-3 sm:p-0">
+          "UNIDOS POR LAS PLAYAS DE LA COSTA PERUANA"
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 w-fit">
+
+          <!-- Grid del puzzle 3x3 SIN GAP -->
+          <div class="grid grid-cols-3 gap-0 bg-green-500 p-2 rounded-lg w-80 h-80">
+            @for (position of getGridArray(); track position) {
+              <div class="bg-white border-2 border-gray-200 rounded flex items-center justify-center relative overflow-hidden hover:border-green-400 transition-colors duration-200 aspect-square"
+                   (dragover)="onDragOver($event)"
+                   (drop)="onDrop($event, position)">
+
+                <!-- Pieza colocada -->
+                @if (getPieceAtPosition(position); as placedPiece) {
+                  <div class="w-full h-full cursor-move"
+                       draggable="true"
+                       (dragstart)="onDragStart($event, placedPiece)">
+                    <div
+                      class="w-full h-full"
+                      [ngStyle]="getPieceBackgroundStyle(placedPiece)">
+                    </div>
+                  </div>
+                }
+
+                <!-- Espacio vacío -->
+                @if (!getPieceAtPosition(position)) {
+                  <div class="w-full h-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 aspect-square">
+                    <span class="text-2xl">📍</span>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-4 mt-4">
+            <div
+              class="bg-green-500 h-4 rounded-full transition-all duration-500 flex items-center justify-end pr-2"
+              [style.width.%]="getCompletionPercentage()">
+              @if (getCompletionPercentage() > 15) {
+                <span class="text-white text-xs font-bold">
+                  {{ getCompletionPercentage().toFixed(0) }}%
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-span-12 xl:col-span-3">
+
+  </div>
+</div>

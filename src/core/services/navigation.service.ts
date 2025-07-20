@@ -9,13 +9,13 @@ export class NavigationService {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  speechControl$ = new Subject<void>();
+  path$ = new Subject<void>();
 
   constructor() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationStart)
     ).subscribe(() => {
-      this.cancelSpeech();
+      this.path$.next();
     });
   }
 
@@ -23,7 +23,6 @@ export class NavigationService {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
     }
-    this.speechControl$.next();
   }
 
   toSplash(): void {
