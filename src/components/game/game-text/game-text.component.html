@@ -1,1 +1,35 @@
-<p>game-text works!</p>
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
+    <div class="hidden xl:block h-full">
+      <app-actions-vertical
+        class="h-full"
+        [actionHandlers]="{
+          home: goToHome,
+          listening: speachText,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-vertical>
+    </div>
+    <div class="xl:hidden w-full">
+      <app-actions-horizontal
+        class="w-full"
+        [actionHandlers]="{
+          home: goToHome,
+          listening: speachText,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-horizontal>
+    </div>
+  </div>
+  <div class="col-span-12 lg:col-span-12 xl:col-span-7 flex flex-col justify-center items-center gap-12 p-6">
+    <div class="font-passion text-center text-6xl mt-3 mb-6">{{gameText?.title}}</div>
+    <div class="font-open font-bold text-lg">{{gameText?.text}}</div>
+  </div>
+  <div class="col-span-12 xl:col-span-3 p-6">
+    <div class="flex items-center justify-center relative lg:h-full">
+      <img class="w-full h-auto lg:max-h-[30rem] lg:w-auto object-contain" [src]="gameText?.image_url" alt="Image">
+    </div>
+  </div>
+</div>

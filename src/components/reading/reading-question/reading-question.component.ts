@@ -35,6 +35,7 @@ export class ReadingQuestionComponent {
   }
 
   loadData(): void {
+    this.selectedOptions = [];
     this.configurationService.getConfiguration("000000001").then(config => {
       this.configuration = config;
       this.indexReading = this.navigationService.getIndexReading();
@@ -70,7 +71,7 @@ export class ReadingQuestionComponent {
   }
 
   goToHome = () => {
-    this.navigationService.toReadings();
+    this.navigationService.toMenuReadings();
   }
 
   goToReading = () => {
@@ -94,6 +95,8 @@ export class ReadingQuestionComponent {
       if (this.indexQuestion < questions.length - 1) {
         const indexQuestionNext = this.indexQuestion + 1;
         this.navigationService.toQuestion(this.indexReading, indexQuestionNext);
+      } else if (this.indexReading === this.configuration.readings.length - 1) {
+        this.navigationService.toMenuGames();
       } else {
         this.navigationService.toReading(this.indexReading + 1);
       }

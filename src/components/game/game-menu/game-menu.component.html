@@ -1,47 +1,39 @@
-<div class="flex flex-col h-full">
-  <div class="flex-1 flex flex-col">
-    <div class="flex-1 grid grid-cols-12 gap-0 p-3">
-      <div class="col-span-5 sm:col-span-4 md:col-span-3 xl:col-span-3">
-        <div class="h-full relative">
-          <img class="absolute h-full object-contain " src="./avif/pet/fox.avif"/>
-        </div>
-      </div>
-      <div class="col-span-7 sm:col-span-8 md:col-span-9 xl:col-span-9">
-        <div class="flex flex-col justify-center h-full gap-2 sm:gap-3 md:gap-5 ">
-          <div class="flex justify-start">
-            <img class="h-auto max-h-36" src="./avif/decoration/balloon_welcome.avif"/>
-          </div>
-          <div class="font-hammer text-[clamp(1rem,2vw,2rem)] px-3">
-            ¡Hola, soy Dexi, tu compañero de aventuras en ComprendixPlay! Estoy listo para aprender y jugar contigo.
-            ¿Qué actividad deseas realizar hoy?
-          </div>
-          <div class="flex flex-wrap justify-around items-center gap-3">
-            <!-- <div class="flex-1 max-w-50" (click)="redirectToReadings()">
-              <img class="w-full cursor-pointer" src="./avif/option/option_reader.avif"/>
-            </div>
-            <div class="flex-1 max-w-50" (click)="redirectToGames()">
-              <img class="w-full cursor-pointer" src="./avif/option/option_grasp.avif"/>
-            </div>
-            <div class="flex-1 max-w-50" (click)="downloadPdf()">
-              <img class="w-full cursor-pointer" src="./avif/option/option_pdf.avif"/>
-            </div> -->
-          </div>
-        </div>
-      </div>
+
+<!-- game-menu.component.html -->
+<div class="grid grid-cols-12 h-full w-full bg-repeat-x bg-left-top [background-size:auto_100%]" style="background-image:url('./avif/game/back_game.avif');">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
+    <div class="hidden xl:block h-full">
+      <app-actions-vertical
+        class="h-full"
+        [actionHandlers]="{
+          home: goToHome,
+        }">
+      ></app-actions-vertical>
     </div>
-    <div class="w-full h-30 bg-repeat-x bg-[length:auto_100%] mt-[-5rem] -z-1" style="background-image:url('./avif/decoration/grass.avif');"></div>
+    <div class="xl:hidden w-full">
+      <app-actions-horizontal
+        class="w-full"
+        [actionHandlers]="{
+          home: goToHome,
+        }">
+      ></app-actions-horizontal>
+    </div>
   </div>
-  <div class="flex flex-wrap justify-between items-center bg-[#f7b62c] gap-2 p-2 @container">
-    <div class="flex justify-around order-2 @sm:order-1">
-      <img src="./icons/ic_youtube.svg" class="h-8 w-8 mx-2 cursor-pointer" alt="youtube"/>
-      <img src="./icons/ic_twitter.svg" class="h-8 w-8 mx-2 cursor-pointer" alt="twitter"/>
+  <div class="col-span-12 lg:col-span-12 xl:col-span-7 grid grid-cols-1 sm:grid-cols-3 place-items-center place-content-end gap-6 xl:gap-12 pt-6">
+    <div class="col-span-1 sm:col-span-3 text-6xl sm:text-7xl font-winky font-bold text-yellow-500 text-center text-out-color-yellow-900 text-out-w-4 m-3 p-3 sm:p-0">
+      JUEGOS DE COMPRENSION
     </div>
-    <div class="flex-1 min-w-full @sm:min-w-auto font-chau text-[clamp(1rem,2vw,1.8rem)] text-white text-center w-full order-1 @sm:order-2">
-      {{'"Sin comprensión, la lectura no tiene dirección"'}}
+    <div class="col-span-1">
+      <img class="max-h-[25rem] cursor-pointer" src="./avif/game/tube_1.avif" alt="tube" (click)="goToPuzzle(0)"/>
     </div>
-    <div class="flex justify-around order-3 @sm:order-3">
-      <img src="./icons/ic_facebook.svg" class="h-8 w-8 mx-2 cursor-pointer" alt="facebook"/>
-      <img src="./icons/ic_info.svg" class="h-8 w-8 mx-2 cursor-pointer" alt="info"/>
+    <div class="col-span-1">
+      <img class="max-h-[25rem] cursor-pointer" src="./avif/game/tube_2.avif" alt="tube" (click)="goToPuzzle(1)"/>
     </div>
+    <div class="col-span-1">
+      <img class="max-h-[25rem] cursor-pointer" src="./avif/game/tube_3.avif" alt="tube" (click)="goToPuzzle(2)"/>
+    </div>
+  </div>
+  <div class="col-span-12 hidden xl:col-span-3 xl:flex items-center justify-center">
+    <img class="max-h-[25rem]" src="./avif/pet/fox_play.avif" alt="fox"/>
   </div>
 </div>

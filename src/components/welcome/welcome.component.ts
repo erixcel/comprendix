@@ -11,12 +11,12 @@ export class WelcomeComponent {
 
   private navigationService = inject(NavigationService);
 
-  redirectToReadings(): void {
-    this.navigationService.toReadings();
+  redirecttoMenuReadings(): void {
+    this.navigationService.toMenuReadings();
   }
 
-  redirectToGames(): void {
-    this.navigationService.toGames();
+  redirecttoMenuGames(): void {
+    this.navigationService.toMenuGames();
   }
 
   downloadPdf(): void {

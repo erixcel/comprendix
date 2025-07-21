@@ -1,4 +1,6 @@
 import { Configuration } from "../model/configuration";
+import { game_puzzle_1, game_puzzle_2, game_puzzle_3 } from "./game/puzzle";
+import { game_text_1, game_text_2, game_text_3 } from "./game/text";
 import { reading_bear } from "./reading/bear";
 import { reading_duck } from "./reading/duck";
 import { reading_frog } from "./reading/frog";
@@ -18,36 +20,12 @@ export const configuration: Configuration = {
     url: "https://example.com/sample.pdf"
   },
   games: [
-    {
-      type: "memory",
-      image_url: "https://example.com/memory-game.jpg",
-      points: 10,
-      cards: [
-        { id: "card1", image_url: "https://example.com/card1.jpg", flipped: false },
-        { id: "card2", image_url: "https://example.com/card2.jpg", flipped: false }
-      ]
-    },
-    {
-      type: "puzzle",
-      image_url: "https://example.com/puzzle-game.jpg",
-      points: 15,
-      level: "easy"
-    },
-    {
-      type: "puzzle",
-      image_url: "https://example.com/puzzle-game.jpg",
-      points: 15,
-      level: "medium"
-    },
-    {
-      type: "guess",
-      image_url: "https://example.com/guess-game.jpg",
-      points: 20,
-      cards: [
-        { id: "guess1", image_url: "https://example.com/guess1.jpg", name: "Guess 1" },
-        { id: "guess2", image_url: "https://example.com/guess2.jpg", name: "Guess 2" }
-      ]
-    }
+    game_puzzle_1,
+    game_text_1,
+    game_puzzle_2,
+    game_text_2,
+    game_puzzle_3,
+    game_text_3,
   ],
   readings: [
     reading_penguin,

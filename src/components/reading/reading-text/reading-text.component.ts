@@ -17,12 +17,12 @@ import { OptionsVerticalComponent } from "../../shared/options-vertical/options-
   styleUrls: ['./reading-text.component.css'],
 })
 export class ReadingTextComponent {
+
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
   private modalService = inject(ModalService);
   private configuration: Configuration | null = null;
   private destroy$ = new Subject<void>();
-
 
   indexReading: number | null = null;
 
@@ -53,7 +53,7 @@ export class ReadingTextComponent {
   }
 
   goToHome = () => {
-    this.navigationService.toReadings();
+    this.navigationService.toMenuReadings();
   }
 
   speachText = () => {
@@ -72,7 +72,7 @@ export class ReadingTextComponent {
       const indexQuestionPrevious = this.configuration.readings[indexReadingPrevious]?.questions?.length ? this.configuration.readings[indexReadingPrevious].questions.length - 1 : 0;
       this.navigationService.toQuestion(indexReadingPrevious, indexQuestionPrevious);
     } else {
-      this.navigationService.toReadings();
+      this.navigationService.toMenuReadings();
     }
   }
 

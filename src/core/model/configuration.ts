@@ -1,33 +1,72 @@
-export interface BaseGame {
-  type: 'memory' | 'puzzle' | 'guess';
-  image_url: string;
-  points: number;
-}
-
-export interface Memory extends BaseGame {
-  type: 'memory';
-  cards: {
-    id: string;
+export interface GameChoose {
+  type: 'choose';
+  index_choose: number;
+  options: {
     image_url: string;
-    flipped: boolean;
   }[];
 }
-
-export interface Puzzle extends BaseGame {
+export interface GameMatchImage {
+  type: 'match-image';
+  options: {
+    index_match: number;
+    image_url: string;
+  }[];
+}
+export interface GameMatchText {
+  type: 'match-text';
+  options: {
+    index_match: number;
+    text: string;
+  }[];
+}
+export interface GameMove {
+  type: 'move';
+  items: {
+    image_url: string;
+    index_box: number;
+  }[],
+  boxs: {
+    image_url: string;
+  }[];
+}
+export interface GameNumber {
+  type: 'number';
+  options: {
+    order: number;
+    text: string;
+  }[];
+}
+export interface GameOrder {
+  type: 'order';
+  options: {
+    order: number;
+    text: string;
+    image_url: string;
+  }[];
+}
+export interface GamePuzzle {
   type: 'puzzle';
-  level: 'easy' | 'medium' | 'hard';
-}
-
-export interface Guess extends BaseGame {
-  type: 'guess';
-  cards: {
-    id: string;
-    image_url: string;
-    name: string;
+  title: string;
+  image_url: string;
+  image_pet: string;
+  gridSize: number;
+  pieces: {
+    id: number;
+    row: number;
+    col: number;
+    correctPosition: number;
+    currentPosition: number;
+    isPlaced: boolean;
   }[];
 }
+export interface GameText {
+  type: 'text';
+  title: string;
+  text: string;
+  image_url: string;
+}
 
-export type Game = Memory | Puzzle | Guess;
+export type Game = GameChoose | GameMatchImage | GameMatchText | GameMove | GameNumber | GameOrder | GamePuzzle | GameText;
 
 export interface Pdf {
   name: string;

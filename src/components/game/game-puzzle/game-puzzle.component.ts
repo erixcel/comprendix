@@ -1,52 +1,61 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Puzzle } from '../../../core/model/configuration';
 import { ActionsVerticalComponent } from "../../shared/actions-vertical/actions-vertical.component";
 import { ActionsHorizontalComponent } from "../../shared/actions-horizontal/actions-horizontal.component";
-
-interface PuzzlePiece {
-  id: number;
-  row: number;
-  col: number;
-  correctPosition: number;
-  currentPosition: number;
-  isPlaced: boolean;
-}
+import { ConfigurationService } from '../../../core/services/configuration.service';
+import { Configuration, GamePuzzle } from '../../../core/model/configuration';
+import { NavigationService } from '../../../core/services/navigation.service';
 
 @Component({
   selector: 'app-game-puzzle',
   standalone: true,
   imports: [CommonModule, ActionsVerticalComponent, ActionsHorizontalComponent],
   templateUrl: './game-puzzle.component.html',
-  styleUrl: './game-puzzle.component.css'
+  styleUrls: ['./game-puzzle.component.css']
 })
-export class GamePuzzleComponent implements OnInit {
-  @Input() puzzle!: Puzzle;
-  @Input() puzzleImageUrl: string = './avif/puzzle/game_puzzle_1.avif';
-  @Output() puzzleCompleted = new EventEmitter<boolean>();
+export class GamePuzzleComponent {
+  private navigationService = inject(NavigationService);
+  private configurationService = inject(ConfigurationService);
+  private configuration: Configuration | null = null;
 
-  pieces: PuzzlePiece[] = [];
-  gridSize = 3; // 3x3 grid
-  draggedPiece: PuzzlePiece | null = null;
-  showTitle = true;
-  gameCompleted = false;
+  indexGamePuzzle: number | null = null;
+  gamePuzzle: GamePuzzle | null = null;
+
+  // extra
+  draggedPiece: GamePuzzle['pieces'][number] | null = null;
 
   ngOnInit() {
-    this.initializePuzzle();
+    this.indexGamePuzzle = this.navigationService.getIndexGamePuzzle();
+    this.configurationService.getConfiguration("000000001").then(config => {
+      this.configuration = config;
+      if (this.configuration && this.indexGamePuzzle !== null) {
+        this.gamePuzzle = this.configuration.games[this.indexGamePuzzle] as GamePuzzle;
+        this.initializePieces();
+      }
+    });
   }
 
-  goToHome = () => {}
+  goToHome = () => {
+    this.navigationService.toMenuGames();
+  };
+  goToPrevious = () => {
+    this.navigationService.previousInGame(this.indexGamePuzzle!, this.configuration!);
+  };
+  goToNext = () => {
+    this.navigationService.nextInGame(this.indexGamePuzzle!, this.configuration!);
+  };
 
-  goToPrevious = () => {}
+  private initializePieces() {
+    if (!this.gamePuzzle) return;
 
-  goToNext = () => {}
+    const size = this.gamePuzzle.gridSize;
+    const total = size * size;
+    const pieces = [];
 
-  initializePuzzle() {
-    this.pieces = [];
-    for (let i = 0; i < this.gridSize * this.gridSize; i++) {
-      const row = Math.floor(i / this.gridSize);
-      const col = i % this.gridSize;
-      this.pieces.push({
+    for (let i = 0; i < total; i++) {
+      const row = Math.floor(i / size);
+      const col = i % size;
+      pieces.push({
         id: i,
         row,
         col,
@@ -55,37 +64,46 @@ export class GamePuzzleComponent implements OnInit {
         isPlaced: false
       });
     }
+
+    this.gamePuzzle.pieces = pieces;
     this.shufflePieces();
   }
 
-  getPieceBackgroundStyle(piece: PuzzlePiece): any {
-    // Para gridSize = 3, background-size = 300% y step = 50%
-    const step = 100 / (this.gridSize - 1);
-    const backgroundPosX = piece.col * step;
-    const backgroundPosY = piece.row * step;
 
+  private shufflePieces() {
+    if (!this.gamePuzzle) return;
+    for (let i = this.gamePuzzle.pieces.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.gamePuzzle.pieces[i], this.gamePuzzle.pieces[j]] =
+        [this.gamePuzzle.pieces[j], this.gamePuzzle.pieces[i]];
+    }
+  }
+
+  get gridSize() {
+    return this.gamePuzzle?.gridSize ?? 0;
+  }
+
+  get pieces() {
+    return this.gamePuzzle?.pieces ?? [];
+  }
+
+  getPieceBackgroundStyle(piece: GamePuzzle['pieces'][number]) {
+    const step = 100 / (this.gridSize - 1);
     return {
-      'background-image': `url('${this.puzzleImageUrl}')`,
+      'background-image': `url('${this.gamePuzzle?.image_url}')`,
       'background-size': `${this.gridSize * 100}% ${this.gridSize * 100}%`,
-      'background-position': `${backgroundPosX}% ${backgroundPosY}%`,
+      'background-position': `${piece.col * step}% ${piece.row * step}%`,
       'background-repeat': 'no-repeat',
       'width': '100%',
       'height': '100%'
     };
   }
 
-  shufflePieces() {
-    for (let i = this.pieces.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [this.pieces[i], this.pieces[j]] = [this.pieces[j], this.pieces[i]];
-    }
-  }
-
-  onDragStart(event: DragEvent, piece: PuzzlePiece) {
+  onDragStart(event: DragEvent, piece: GamePuzzle['pieces'][number]) {
     this.draggedPiece = piece;
     if (event.dataTransfer) {
       event.dataTransfer.effectAllowed = 'move';
-      event.dataTransfer.setData('text/html', piece.id.toString());
+      event.dataTransfer.setData('text/plain', piece.id.toString());
     }
   }
 
@@ -100,10 +118,10 @@ export class GamePuzzleComponent implements OnInit {
     event.preventDefault();
     if (!this.draggedPiece) return;
 
-    const pieceInPosition = this.pieces.find(p => p.currentPosition === targetPosition);
-    if (pieceInPosition) {
-      pieceInPosition.currentPosition = this.draggedPiece.currentPosition;
-      pieceInPosition.isPlaced = this.draggedPiece.currentPosition >= 0;
+    const swap = this.pieces.find(p => p.currentPosition === targetPosition);
+    if (swap) {
+      swap.currentPosition = this.draggedPiece.currentPosition;
+      swap.isPlaced = swap.currentPosition >= 0;
     }
 
     this.draggedPiece.currentPosition = targetPosition;
@@ -120,48 +138,42 @@ export class GamePuzzleComponent implements OnInit {
     this.draggedPiece = null;
   }
 
-  getPieceAtPosition(position: number): PuzzlePiece | null {
-    return this.pieces.find(p => p.currentPosition === position) || null;
-  }
-
-  getAvailablePieces(): PuzzlePiece[] {
-    return this.pieces.filter(p => !p.isPlaced);
-  }
-
-  getPlacedPieces(): PuzzlePiece[] {
-    return this.pieces.filter(p => p.isPlaced);
-  }
-
   checkCompletion() {
-    const isComplete = this.pieces.every(piece =>
-      piece.isPlaced && piece.currentPosition === piece.correctPosition
+    if (!this.gamePuzzle) return;
+    const isComplete = this.pieces.every(p =>
+      p.isPlaced && p.currentPosition === p.correctPosition
     );
-    if (isComplete && !this.gameCompleted) {
-      this.gameCompleted = true;
-      this.showTitle = false;
-      this.puzzleCompleted.emit(true);
+    if (isComplete) {
+
     }
   }
 
   resetGame() {
-    this.pieces.forEach(piece => {
-      piece.currentPosition = -1;
-      piece.isPlaced = false;
+    if (!this.gamePuzzle) return;
+    this.gamePuzzle.pieces.forEach(p => {
+      p.currentPosition = -1;
+      p.isPlaced = false;
     });
     this.shufflePieces();
-    this.gameCompleted = false;
-    this.showTitle = true;
   }
 
   getGridArray(): number[] {
     return Array.from({ length: this.gridSize * this.gridSize }, (_, i) => i);
   }
 
-  getCorrectlyPlacedPieces(): number {
+  getCorrectlyPlacedCount() {
     return this.pieces.filter(p => p.isPlaced && p.currentPosition === p.correctPosition).length;
   }
 
-  getCompletionPercentage(): number {
-    return (this.getCorrectlyPlacedPieces() / this.pieces.length) * 100;
+  getCompletionPercentage() {
+    return (this.getCorrectlyPlacedCount() / this.pieces.length) * 100;
+  }
+
+  getAvailablePieces(): GamePuzzle['pieces'][number][] {
+    return this.pieces.filter(p => !p.isPlaced);
+  }
+
+  getPieceAtPosition(position: number): GamePuzzle['pieces'][number] | null {
+    return this.pieces.find(p => p.currentPosition === position) ?? null;
   }
 }
