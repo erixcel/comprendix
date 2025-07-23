@@ -74,11 +74,6 @@ export interface GameText {
 
 export type Game = GameChoose | GameMatchImage | GameMatchText | GameMove | GameNumber | GameOrder | GamePuzzle | GameText;
 
-export interface Pdf {
-  name: string;
-  url: string;
-}
-
 export interface Reading {
   title: string;
   text: string;
@@ -99,7 +94,6 @@ export interface Question {
 
 export interface Configuration {
   id: string;
-  pdf: Pdf;
   games: Game[];
   readings: Reading[];
 }

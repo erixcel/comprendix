@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { firebaseConfig } from '../constants/firebase.config';
 import { User } from '../model/user';
 
@@ -31,7 +31,7 @@ export class AuthService {
       // Check if username or email already exists
       const usernameQuery = query(collection(this.db, 'users'), where('username', '==', username));
       const emailQuery = query(collection(this.db, 'users'), where('correo', '==', correo));
-      
+
       const [usernameSnapshot, emailSnapshot] = await Promise.all([
         getDocs(usernameQuery),
         getDocs(emailQuery)
@@ -46,7 +46,7 @@ export class AuthService {
       }
 
       // Create new user
-      const newUser: User = {
+      const newUser: Omit<User, 'id'> = {
         username,
         correo,
         contraseña, // In production, this should be hashed
@@ -55,7 +55,7 @@ export class AuthService {
 
       const docRef = await addDoc(collection(this.db, 'users'), newUser);
       const userWithId = { ...newUser, id: docRef.id };
-      
+
       // Save to localStorage and update subject
       localStorage.setItem('currentUser', JSON.stringify(userWithId));
       this.currentUserSubject.next(userWithId);
@@ -72,7 +72,7 @@ export class AuthService {
       // Try to find user by username or email
       const usernameQuery = query(collection(this.db, 'users'), where('username', '==', usernameOrEmail));
       const emailQuery = query(collection(this.db, 'users'), where('correo', '==', usernameOrEmail));
-      
+
       const [usernameSnapshot, emailSnapshot] = await Promise.all([
         getDocs(usernameQuery),
         getDocs(emailQuery)
@@ -90,14 +90,14 @@ export class AuthService {
       }
 
       const userData = userDoc.data() as User;
-      
+
       // Check password (in production, compare hashed passwords)
       if (userData.contraseña !== contraseña) {
         return { success: false, message: 'Contraseña incorrecta' };
       }
 
       const userWithId = { ...userData, id: userDoc.id };
-      
+
       // Save to localStorage and update subject
       localStorage.setItem('currentUser', JSON.stringify(userWithId));
       this.currentUserSubject.next(userWithId);
@@ -109,10 +109,7 @@ export class AuthService {
     }
   }
 
-  signOut(): void {
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
+
 
   isAuthenticated(): boolean {
     return this.currentUserSubject.value !== null;
@@ -125,7 +122,12 @@ export class AuthService {
   async updateScore(newScore: number): Promise<boolean> {
     try {
       const currentUser = this.getCurrentUser();
-      if (!currentUser || !currentUser.id) return false;
+      if (!currentUser) return false;
+
+      // Only update if the new score is higher than current score
+      if (newScore <= (currentUser.score || 0)) {
+        return true; // Consider it successful but no update needed
+      }
 
       const userRef = doc(this.db, 'users', currentUser.id);
       await updateDoc(userRef, { score: newScore });
@@ -140,5 +142,17 @@ export class AuthService {
       console.error('Error updating score:', error);
       return false;
     }
+  }
+
+  signOut(): void {
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      // Clear user-specific progress
+      const progressKey = `userProgress_${currentUser.id}`;
+      localStorage.removeItem(progressKey);
+    }
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('temporaryScore'); // Clear temporary score on logout
+    this.currentUserSubject.next(null);
   }
 }

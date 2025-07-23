@@ -11,16 +11,20 @@ export class WelcomeComponent {
 
   private navigationService = inject(NavigationService);
 
-  redirecttoMenuReadings(): void {
+  redirectToMenuReadings(): void {
     this.navigationService.toMenuReadings();
   }
 
-  redirecttoMenuGames(): void {
+  redirectToMenuGames(): void {
     this.navigationService.toMenuGames();
   }
 
-  downloadPdf(): void {
+  redirectToDownload(): void {
+    this.navigationService.toDownloadReadings();
+  }
 
+  redirectToYoutube(): void {
+    
   }
 
 }

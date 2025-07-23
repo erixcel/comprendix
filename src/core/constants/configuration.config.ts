@@ -18,10 +18,6 @@ export const CONFIG_PARAM = "configuration";
 
 export const configuration: Configuration = {
   id: LOCAL_ID,
-  pdf: {
-    name: "Sample PDF",
-    url: "https://example.com/sample.pdf"
-  },
   games: [
     game_puzzle_1,
     game_text_1,

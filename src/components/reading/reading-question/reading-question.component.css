@@ -1,0 +1,53 @@
+/* Animación para los puntos ganados */
+@keyframes pointsAnimation {
+  0% {
+    transform: scale(0.5) translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.points-animation {
+  animation: pointsAnimation 0.6s ease-out;
+}
+
+/* Efecto de pulso para opciones correctas */
+@keyframes correctPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.correct-answer {
+  animation: correctPulse 1s ease-out;
+}
+
+/* Efecto de shake para opciones incorrectas */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.wrong-answer {
+  animation: shake 0.5s ease-in-out;
+}
