@@ -16,6 +16,8 @@ import { GameNumberComponent } from '../components/game/game-number/game-number.
 import { GameOrderComponent } from '../components/game/game-order/game-order.component';
 import { GamePuzzleComponent } from '../components/game/game-puzzle/game-puzzle.component';
 import { GameTextComponent } from '../components/game/game-text/game-text.component';
+import { ReadingDownloadComponent } from '../components/reading/reading-download/reading-download.component';
+import { GameDownloadComponent } from '../components/game/game-download/game-download.component';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -23,7 +25,9 @@ export const routes: Routes = [
     children: [
       { path: "welcome", component: WelcomeComponent},
       { path: "menu/readings", component: ReadingMenuComponent},
+      { path: "download/readings", component: ReadingDownloadComponent},
       { path: "menu/games", component: GameMenuComponent},
+      { path: "download/games", component: GameDownloadComponent},
       { path: "game/choose/:index", component: GameChooseComponent},
       { path: "game/match-image/:index", component: GameMatchImageComponent},
       { path: "game/match-text/:index", component: GameMatchTextComponent},

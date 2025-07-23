@@ -14,6 +14,7 @@ Ahora, antes de hablar, dice: —Un momento… ¿lo escuché bien?`,
   phrase: "Escuchar con atención te enseña más que hablar sin pensar.",
   image_url_menu: "./avif/menu/parrot.avif",
   image_url_text: "./avif/reading/reading_parrot.avif",
+  pdf_url: "./pdf/reading_parrot.pdf",
   questions: [
     {
       id: "0",

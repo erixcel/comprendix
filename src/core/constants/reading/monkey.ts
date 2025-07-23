@@ -11,6 +11,7 @@ Mi idea era buena, pero con ustedes fue maravillosa.`,
   phrase: "Juntos podemos más, y la creatividad se comparte mejor.",
   image_url_menu: "./avif/menu/monkey.avif",
   image_url_text: "./avif/reading/reading_monkey.avif",
+  pdf_url: "./pdf/reading_monkey.pdf",
   questions: [
     {
       id: "0",

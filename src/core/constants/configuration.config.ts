@@ -1,4 +1,5 @@
 import { Configuration } from "../model/configuration";
+import { game_number_1 } from "./game/number";
 import { game_puzzle_1, game_puzzle_2, game_puzzle_3 } from "./game/puzzle";
 import { game_text_1, game_text_2, game_text_3 } from "./game/text";
 import { reading_bear } from "./reading/bear";
@@ -22,6 +23,7 @@ export const configuration: Configuration = {
   games: [
     game_puzzle_1,
     game_text_1,
+    game_number_1,
     game_puzzle_2,
     game_text_2,
     game_puzzle_3,

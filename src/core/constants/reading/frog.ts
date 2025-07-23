@@ -14,6 +14,7 @@ Ella devolvió la corona a su papá, pero él le dijo:
   phrase: "Si saltas con ganas, aunque falles, un día llegarás.",
   image_url_menu: "./avif/menu/frog.avif",
   image_url_text: "./avif/reading/reading_frog.avif",
+  pdf_url: "./pdf/reading_frog.pdf",
   questions: [
     {
       id: "0",

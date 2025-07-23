@@ -49,6 +49,8 @@ export interface GamePuzzle {
   title: string;
   image_url: string;
   image_pet: string;
+  image_pdf: string;
+  pdf_url: string;
   gridSize: number;
   pieces: {
     id: number;
@@ -79,6 +81,7 @@ export interface Reading {
   phrase: string;
   image_url_menu: string;
   image_url_text: string;
+  pdf_url: string;
   questions: Question[];
 }
 

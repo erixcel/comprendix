@@ -5,6 +5,8 @@ export const game_puzzle_1: GamePuzzle = {
   title: "UNIDOS POR LAS PLAYAS DE LA COSTA PERUANA",
   image_url: "./avif/puzzle/game_puzzle_1.avif",
   image_pet: "./avif/pet/fox_puzzle_1.avif",
+  image_pdf: "./avif/download/book_1.avif",
+  pdf_url: "./pdf/pdf_gametext_2.pdf",
   gridSize: 3,
   pieces: []
 };
@@ -14,6 +16,8 @@ export const game_puzzle_2: GamePuzzle = {
   title: "EL CLUB DE LA SABIDURÍA ANDINA",
   image_url: "./avif/puzzle/game_puzzle_2.avif",
   image_pet: "./avif/pet/fox_puzzle_2.avif",
+  image_pdf: "./avif/download/book_2.avif",
+  pdf_url: "./pdf/pdf_gametext_2.pdf",
   gridSize: 3,
   pieces: []
 };
@@ -23,6 +27,8 @@ export const game_puzzle_3: GamePuzzle = {
   title: "LOS GUARDIANES DEL CACAO",
   image_url: "./avif/puzzle/game_puzzle_3.avif",
   image_pet: "./avif/pet/fox_puzzle_3.avif",
+  image_pdf: "./avif/download/book_3.avif",
+  pdf_url: "./pdf/pdf_gametext_3.pdf",
   gridSize: 3,
   pieces: []
 };

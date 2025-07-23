@@ -55,6 +55,22 @@ export class NavigationService {
     );
   }
 
+  toDownloadReadings(): void {
+    const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;
+    this.router.navigate(
+      ['content', 'download', 'readings'],
+      { queryParams: { [CONFIG_PARAM]: param } }
+    );
+  }
+
+  toDownloadGames(): void {
+    const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;
+    this.router.navigate(
+      ['content', 'download', 'games'],
+      { queryParams: { [CONFIG_PARAM]: param } }
+    );
+  }
+
   toReading(index: number): void {
     const param = this.route.snapshot.queryParamMap.get(CONFIG_PARAM) ?? LOCAL_ID;
     this.router.navigate(
@@ -200,7 +216,7 @@ export class NavigationService {
     if (nextIndex < config.games.length) {
       this.router.navigate(['content', 'game', config.games[nextIndex].type, nextIndex]);
     } else {
-
+      this.toDownloadReadings();
     }
   }
 
@@ -209,7 +225,63 @@ export class NavigationService {
     if (previousIndex >= 0) {
       this.router.navigate(['content', 'game', config.games[previousIndex].type, previousIndex]);
     } else {
-      this.router.navigate(['content', 'menu', 'games']);
+      this.toMenuGames();
+    }
+  }
+
+  toFirstReading(config: Configuration): void {
+    if (config.readings.length > 0) {
+      this.router.navigate(['content', 'reading', 0]);
+    } else {
+      this.toMenuReadings();
+    }
+  }
+
+  toLastReading(config: Configuration): void {
+    if (config.readings.length > 0) {
+      const lastReadingIndex = config.readings.length - 1;
+      this.router.navigate(['content', 'reading', lastReadingIndex]);
+    } else {
+      this.toMenuReadings();
+    }
+  }
+
+  toFirstReadingQuestion(config: Configuration): void {
+    if (config.readings.length > 0 && config.readings[0].questions.length > 0) {
+      this.router.navigate(['content', 'reading', 0, 'question', 0]);
+    } else {
+      this.toMenuReadings();
+    }
+  }
+
+  toLastReadingQuestion(config: Configuration): void {
+    if (config.readings.length > 0) {
+      const lastReadingIndex = config.readings.length - 1;
+      const lastQuestionIndex = config.readings[lastReadingIndex].questions.length - 1;
+      if (lastQuestionIndex >= 0) {
+        this.router.navigate(['content', 'reading', lastReadingIndex, 'question', lastQuestionIndex]);
+      } else {
+        this.toMenuReadings();
+      }
+    } else {
+      this.toMenuReadings();
+    }
+  }
+
+  toFirstGame(config: Configuration): void {
+    if (config.games.length > 0) {
+      this.router.navigate(['content', 'game', config.games[0].type, 0]);
+    } else {
+      this.toMenuGames();
+    }
+  }
+
+  toLastGame(config: Configuration): void {
+    if (config.games.length > 0) {
+      const lastGameIndex = config.games.length - 1;
+      this.router.navigate(['content', 'game', config.games[lastGameIndex].type, lastGameIndex]);
+    } else {
+      this.toMenuGames();
     }
   }
 }

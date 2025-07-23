@@ -17,6 +17,7 @@ Desde ese día, Tito ya no asustaba.
   phrase: "La verdadera fuerza está en la amabilidad.",
   image_url_menu: "./avif/menu/bear.avif",
   image_url_text: "./avif/reading/reading_bear.avif",
+  pdf_url: "./pdf/reading_bear.pdf",
   questions: [
     {
       id: "0",

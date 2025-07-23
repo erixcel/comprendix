@@ -14,6 +14,7 @@ puede ser nuestro mayor talento en el lugar correcto.`,
   phrase: "A veces lo que creemos que es una debilidad, es nuestra mayor fortaleza.",
   image_url_menu: "./avif/menu/penguin.avif",
   image_url_text: "./avif/reading/reading_penguin.avif",
+  pdf_url: "./pdf/reading_penguin.pdf",
   questions: [
     {
       id: "0",

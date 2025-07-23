@@ -8,6 +8,7 @@ Sus ojos se llenaron de lágrimas. Todos miraron a Débora… esta vez, ya no co
   phrase: "La sabiduría viene de pensar antes de actuar.",
   image_url_menu: "./avif/menu/snake.avif",
   image_url_text: "./avif/reading/reading_snake.avif",
+  pdf_url: "./pdf/reading_snake.pdf",
   questions: [
     {
       id: "0",

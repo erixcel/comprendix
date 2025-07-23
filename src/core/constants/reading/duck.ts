@@ -12,6 +12,7 @@ Desde ese día, Brunito ya no teme al agua. Porque entendió que la valentía no
   phrase: "Ser valiente es actuar aunque tengas miedo.",
   image_url_menu: "./avif/menu/duck.avif",
   image_url_text: "./avif/reading/reading_duck.avif",
+  pdf_url: "./pdf/reading_duck.pdf",
   questions: [
     {
       id: "0",
