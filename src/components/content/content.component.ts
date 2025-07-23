@@ -4,10 +4,12 @@ import { Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ModalPhraseComponent } from "../shared/modal-phrase/modal-phrase.component";
+import { DrawerComponent } from "../shared/drawer/drawer.component";
+import { DrawerService } from '../../core/services/drawer.service';
 
 @Component({
   selector: 'app-content',
-  imports: [RouterOutlet, FormsModule, CommonModule, ModalPhraseComponent],
+  imports: [RouterOutlet, FormsModule, CommonModule, ModalPhraseComponent, DrawerComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })
@@ -17,9 +19,14 @@ export class ContentComponent {
   private readonly yellowDark = '#e6c84c';
 
   private navigationService = inject(NavigationService);
+  private drawerService = inject(DrawerService)
 
   redirectToSplash(): void {
     this.navigationService.toSplash();
+  }
+
+  toogle(): void {
+    this.drawerService.toggleDrawer();
   }
 
   get backgroundStyle() {

@@ -1,0 +1,43 @@
+/* Animaciones para el drawer */
+.drawer-enter {
+  transform: translateX(100%);
+}
+
+.drawer-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.drawer-leave {
+  transform: translateX(0);
+}
+
+.drawer-leave-active {
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Scrollbar personalizado para el drawer */
+.drawer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background: #f7b62c;
+  border-radius: 3px;
+}
+
+.drawer-content::-webkit-scrollbar-thumb:hover {
+  background: #e6c84c;
+}
+
+/* Efectos hover para las opciones del menú */
+.menu-option:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(247, 182, 44, 0.3);
+}

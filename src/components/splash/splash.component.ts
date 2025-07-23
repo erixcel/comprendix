@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { NavigationService } from '../../core/services/navigation.service';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-splash',
@@ -24,6 +26,8 @@ export class SplashComponent implements AfterViewInit, OnDestroy {
   private lastFrameTime = 0;
 
   private navigationService = inject(NavigationService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
@@ -47,7 +51,11 @@ export class SplashComponent implements AfterViewInit, OnDestroy {
   }
 
   redirectToWelcome(): void {
-    this.navigationService.toWelcome();
+    if (this.authService.isAuthenticated()) {
+      this.navigationService.toWelcome();
+    } else {
+      this.router.navigate(['/auth']);
+    }
   }
 
   private animate = (timestamp?: number) => {

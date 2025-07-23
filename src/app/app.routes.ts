@@ -4,6 +4,10 @@ import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { ContentComponent } from '../components/content/content.component';
 import { WelcomeComponent } from '../components/welcome/welcome.component';
 import { ConfigurationGuard } from '../core/guards/configuration.guard';
+import { AuthGuard } from '../core/guards/auth.guard';
+import { AuthComponent } from '../components/auth/auth.component';
+import { SignInComponent } from '../components/auth/sign-in/sign-in.component';
+import { SignUpComponent } from '../components/auth/sign-up/sign-up.component';
 import { ReadingTextComponent } from '../components/reading/reading-text/reading-text.component';
 import { GameMenuComponent } from '../components/game/game-menu/game-menu.component';
 import { ReadingMenuComponent } from '../components/reading/reading-menu/reading-menu.component';
@@ -21,7 +25,15 @@ import { GameDownloadComponent } from '../components/game/game-download/game-dow
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
-  { path: 'content', component: ContentComponent, canActivateChild: [ConfigurationGuard],
+  { 
+    path: 'auth', component: AuthComponent, children: [
+      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+      { path: 'sign-in', component: SignInComponent },
+      { path: 'sign-up', component: SignUpComponent }
+    ]
+  },
+  { 
+    path: 'content', component: ContentComponent, canActivateChild: [AuthGuard, ConfigurationGuard],
     children: [
       { path: "welcome", component: WelcomeComponent},
       { path: "menu/readings", component: ReadingMenuComponent},

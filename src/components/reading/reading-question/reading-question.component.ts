@@ -36,6 +36,8 @@ export class ReadingQuestionComponent {
 
   loadData(): void {
     this.selectedOptions = [];
+    this.correctAnswerIndex = null;
+    this.showCorrectAnswer = false;
     this.configurationService.getConfiguration("000000001").then(config => {
       this.configuration = config;
       this.indexReading = this.navigationService.getIndexReading();
