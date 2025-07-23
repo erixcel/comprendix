@@ -1,1 +1,158 @@
-<p>game-match-image works!</p>
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
+    <div class="hidden xl:block h-full">
+      <app-actions-vertical
+        class="h-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-vertical>
+    </div>
+    <div class="xl:hidden w-full">
+      <app-actions-horizontal
+        class="w-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-horizontal>
+    </div>
+  </div>
+  
+  <div class="col-span-12 lg:col-span-12 xl:col-span-7 flex flex-col justify-center items-center p-6 sm:p-4">
+    <!-- Contenedor principal del juego con layout responsivo -->
+    <div 
+    id="game-container"
+    class="relative bg-white rounded-lg shadow-lg p-8 w-full max-w-5xl select-none"
+    (mousemove)="onMouseMove($event)"
+    (mouseleave)="onMouseLeave($event)"
+    (selectstart)="onSelectStart($event)">
+
+    <!-- SVG para las líneas -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" style="top: 0; left: 0;">
+      <!-- Líneas existentes -->
+      @for (line of lines; track $index) {
+        <line
+          [attr.x1]="line.x1"
+          [attr.y1]="line.y1"
+          [attr.x2]="line.x2"
+          [attr.y2]="line.y2"
+          [attr.stroke]="line.color"
+          stroke-width="4"
+          stroke-linecap="round" />
+      }
+      
+      <!-- Línea de arrastre actual -->
+      @if (currentLine) {
+        <line
+          [attr.x1]="currentLine.x1"
+          [attr.y1]="currentLine.y1"
+          [attr.x2]="currentLine.x2"
+          [attr.y2]="currentLine.y2"
+          [attr.stroke]="currentLine.color"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-dasharray="5,5" />
+      }
+    </svg>
+
+    <!-- Layout responsivo: laterales en móvil/tablet, filas arriba/abajo en desktop -->
+    <div class="flex flex-row md:flex-col justify-between items-center gap-8 relative z-10">
+      
+      <!-- Columna/Fila de Imágenes -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
+        @for (imageOption of getImageOptions(); track $index) {
+          <div class="flex flex-row md:flex-col items-center">
+            <div 
+              [id]="$index.toString()"
+              class="w-24 h-24 md:w-32 md:h-32 border-4 rounded-lg overflow-hidden select-none"
+              [style.border-color]="getColorForOption(imageOption)"
+              [class.bg-green-50]="isImageMatched($index)"
+              (dragstart)="onDragStart($event)"
+              (selectstart)="onSelectStart($event)">
+              <img 
+                [src]="imageOption.image_url" 
+                [alt]="imageOption.text"
+                class="w-full h-full object-contain bg-gray-50 pointer-events-none select-none"
+                draggable="false"
+                (dragstart)="onDragStart($event)"
+                (selectstart)="onSelectStart($event)">
+            </div>
+            <!-- Círculo conector - posición responsiva -->
+            <div 
+              [id]="'connector-image-' + $index"
+              class="ml-2 md:ml-0 md:mt-2 w-4 h-4 bg-black rounded-full cursor-pointer hover:bg-gray-700 transition-colors select-none"
+              (mousedown)="onMouseDown($event, $index, 'image')"
+              (mouseup)="onMouseUp($event, $index, 'image')"
+              (mouseenter)="onMouseEnter($index, 'image')"
+              (dragstart)="onDragStart($event)"
+              (selectstart)="onSelectStart($event)">
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Columna/Fila de Textos -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
+        @for (textOption of getTextOptions(); track $index) {
+          <div class="flex flex-row md:flex-col items-center">
+            <!-- Círculo conector - posición responsiva -->
+            <div 
+              [id]="'connector-text-' + $index"
+              class="mr-2 md:mr-0 md:mb-2 w-4 h-4 bg-black rounded-full cursor-pointer hover:bg-gray-700 transition-colors select-none"
+              (mousedown)="onMouseDown($event, $index, 'text')"
+              (mouseup)="onMouseUp($event, $index, 'text')"
+              (mouseenter)="onMouseEnter($index, 'text')"
+              (dragstart)="onDragStart($event)"
+              (selectstart)="onSelectStart($event)">
+            </div>
+            <div 
+              [id]="$index.toString()"
+              class="w-24 h-12 md:w-32 md:h-16 border-4 rounded-lg flex items-center justify-center p-2 select-none"
+              [style.border-color]="getColorForOption(textOption)"
+              [class.bg-green-50]="isTextMatched($index)"
+              (dragstart)="onDragStart($event)"
+              (selectstart)="onSelectStart($event)">
+              <span class="text-sm md:text-lg font-bold text-center text-gray-800 select-none leading-tight">
+                {{ textOption.text }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="w-full bg-gray-200 rounded-full h-4 mt-8">
+      <div
+        class="bg-green-500 h-4 rounded-full transition-all duration-500 flex items-center justify-end pr-2"
+        [style.width.%]="getCompletionPercentage()">
+        @if (getCompletionPercentage() > 15) {
+          <span class="text-white text-xs font-bold">
+            {{ getCompletionPercentage().toFixed(0) }}%
+          </span>
+        }
+      </div>
+    </div>
+
+    <!-- Botón reiniciar -->
+    <button
+      (click)="resetGame()"
+      class="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200">
+      Reiniciar Juego
+    </button>
+    </div>
+  </div>
+  
+  <div class="col-span-12 xl:col-span-3 flex items-center justify-center p-6">
+    <img class="max-h-[30rem] w-auto object-contain select-none" 
+         src="./avif/pet/fox_match_image.avif" 
+         alt="fox"
+         draggable="false"
+         (dragstart)="onDragStart($event)"
+         (selectstart)="onSelectStart($event)"/>
+  </div>
+</div>

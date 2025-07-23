@@ -10,13 +10,17 @@ export interface GameMatchImage {
   options: {
     index_match: number;
     image_url: string;
+    text: string;
+    isMatched: boolean;
   }[];
 }
 export interface GameMatchText {
   type: 'match-text';
   options: {
     index_match: number;
-    text: string;
+    first_text: string;
+    second_text: string;
+    isMatched: boolean;
   }[];
 }
 export interface GameMove {

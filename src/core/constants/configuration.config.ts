@@ -1,4 +1,6 @@
 import { Configuration } from "../model/configuration";
+import { game_match_image_2 } from "./game/match-image";
+import { game_match_text_3 } from "./game/match-text";
 import { game_number_1 } from "./game/number";
 import { game_puzzle_1, game_puzzle_2, game_puzzle_3 } from "./game/puzzle";
 import { game_text_1, game_text_2, game_text_3 } from "./game/text";
@@ -26,8 +28,10 @@ export const configuration: Configuration = {
     game_number_1,
     game_puzzle_2,
     game_text_2,
+    game_match_image_2,
     game_puzzle_3,
     game_text_3,
+    game_match_text_3,
   ],
   readings: [
     reading_penguin,

@@ -16,9 +16,9 @@ import { ActionsHorizontalComponent } from "../../shared/actions-horizontal/acti
 export class ReadingDownloadComponent {
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
+  private configuration: Configuration | null = null;
 
   readings: Reading[] = []
-  config: Configuration | null = null;
 
   constructor() {
 
@@ -26,7 +26,7 @@ export class ReadingDownloadComponent {
 
   ngOnInit(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
-      this.config = config;
+      this.configuration = config;
       this.readings = config.readings;
     })
   }
@@ -36,11 +36,11 @@ export class ReadingDownloadComponent {
   }
 
   goToPrevious = () => {
-    if (this.config) this.navigationService.toLastGame(this.config);
+    if (this.configuration) this.navigationService.toLastGame(this.configuration);
   }
 
   goToNext = () => {
-    if (this.config) this.navigationService.toDownloadGames();
+    if (this.configuration) this.navigationService.toDownloadGames();
   }
 
   downloadPDF(index: number): void {

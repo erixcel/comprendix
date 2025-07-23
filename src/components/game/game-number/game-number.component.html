@@ -1,1 +1,75 @@
-<p>game-number works!</p>
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-12 lg:col-span-12 xl:col-span-2">
+    <div class="hidden xl:block h-full">
+      <app-actions-vertical
+        class="h-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-vertical>
+    </div>
+    <div class="xl:hidden w-full">
+      <app-actions-horizontal
+        class="w-full"
+        [actionHandlers]="{
+          home: goToHome,
+          next: goToNext,
+          previous: goToPrevious,
+        }">
+      ></app-actions-horizontal>
+    </div>
+  </div>
+  
+  <div class="col-span-12 lg:col-span-12 xl:col-span-7 flex flex-col justify-center items-center p-6">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl">
+      <div class="space-y-4">
+        @for (position of [1, 2, 3, 4, 5]; track position; let i = $index) {
+          <div class="flex items-center space-x-4">
+            <!-- Número de posición estático -->
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg">
+              {{ position }}
+            </div>
+            
+            <!-- Oración -->
+            <div class="flex-1 bg-blue-50 border-2 border-blue-200 rounded-lg p-4 cursor-move hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 hover:shadow-md"
+                 draggable="true"
+                 (dragstart)="onDragStart($event, options[i])"
+                 (dragover)="onDragOver($event)"
+                 (drop)="onDrop($event, options[i])">
+              <div class="text-sm font-medium text-gray-800">
+                @if (options[i]) {
+                  {{ options[i].text }}
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Barra de progreso -->
+      <div class="w-full bg-gray-200 rounded-full h-4 mt-6">
+        <div
+          class="bg-green-500 h-4 rounded-full transition-all duration-500 flex items-center justify-end pr-2"
+          [style.width.%]="getCompletionPercentage()">
+          @if (getCompletionPercentage() > 15) {
+            <span class="text-white text-xs font-bold">
+              {{ getCompletionPercentage().toFixed(0) }}%
+            </span>
+          }
+        </div>
+      </div>
+
+      <button
+        (click)="resetGame()"
+        class="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200">
+        Reiniciar Juego
+      </button>
+    </div>
+  </div>
+  
+  <div class="col-span-12 xl:col-span-3 flex items-center justify-center p-6">
+    <img class="max-h-[30rem] w-auto object-contain" src="./avif/pet/fox_number.avif" alt="fox"/>
+  </div>
+</div>

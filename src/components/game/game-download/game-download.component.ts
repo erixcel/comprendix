@@ -15,9 +15,9 @@ import { ActionsHorizontalComponent } from "../../shared/actions-horizontal/acti
 export class GameDownloadComponent {
   private navigationService = inject(NavigationService);
   private configurationService = inject(ConfigurationService);
+  private configuration: Configuration | null = null;
 
   games: Game[] = []
-  config: Configuration | null = null;
 
   constructor() {
 
@@ -25,7 +25,7 @@ export class GameDownloadComponent {
 
   ngOnInit(): void {
     this.configurationService.getConfiguration("000000001").then(config => {
-      this.config = config;
+      this.configuration = config;
       this.games = config.games;
     })
   }
@@ -35,7 +35,7 @@ export class GameDownloadComponent {
   }
 
   goToPrevious = () => {
-    if (this.config) this.navigationService.toDownloadReadings();
+    if (this.configuration) this.navigationService.toDownloadReadings();
   }
 
   downloadPDF(index: number): void {
